@@ -2,14 +2,6 @@ import styled, { css } from 'styled-components';
 import stylesForAll from './StylesForAll';
 
 export const Button = styled.button`
-  @keyframes spin {
-    from {
-      transform: scale(1) rotate(0deg);
-    }
-    to {
-      transform: scale(1) rotate(360deg);
-    }
-  }
   padding: 8px 16px;
   border: 1px solid var(--gray);
   background-color: var(--white);

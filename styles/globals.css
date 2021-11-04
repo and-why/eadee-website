@@ -1,3 +1,6 @@
+html {
+  box-sizing: border-box;
+}
 *,
 *:before,
 *:after {
@@ -21,8 +24,15 @@
   font-style: normal;
   font-weight: 900;
 }
+@font-face {
+  font-family: 'Gloria Hallelujah';
+  src: url('/fonts/GloriaHallelujah-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
 
 html {
+  scroll-behavior: smooth;
   --lightgray: #f8f8f8;
   --lightgrey: var(--lightgray);
   --mediumgray: #b9b9b9;
@@ -45,9 +55,10 @@ html {
   --bs: 0 4px 10px 5px rgba(0, 0, 0, 0.25);
   /* font-sizes */
   --xxl: 64px;
-  --xl: 40px;
+  --xl: 48px;
   --l: 32px;
   --m: 24px;
+  --nf: 18px;
   --n: 16px;
   --s: 12px;
   --xs: 8px;
@@ -57,23 +68,25 @@ html {
   --l-vmin: 32vmin;
   --m-vmin: 16vmin;
   --s-vmin: 12vmin;
-  --xxs-vmin: 8vmin;
-  --xs-vmin: 4vmin;
+  --xs-vmin: 8vmin;
+  --xxs-vmin: 4vmin;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --font-cursive: 'Gloria Hallelujah', cursive;
 }
 
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: var(--normal);
+  font-family: var(--font-family);
+  font-size: var(--n);
   color: var(--dark);
 }
-/* @media (min-width: 800px) {
+@media (min-width: 800px) {
   body {
-    font-size: 14px;
+    font-size: var(--nf);
   }
-} */
+}
 
 a {
   color: inherit;
@@ -91,8 +104,12 @@ a:hover {
 }
 p {
   margin: 0;
+  margin-bottom: var(--xxs);
   padding: 0;
   line-height: 1.55;
+}
+p:last-child {
+  margin-bottom: 0px;
 }
 
 h1,
@@ -114,13 +131,6 @@ h2 {
   font-weight: 300;
 }
 @media (min-width: 800px) {
-  h1 {
-    font-size: calc(var(--xl) + 8px);
-  }
-  h2 {
-    font-size: calc(var(--m) + 4px);
-    font-weight: 300;
-  }
 }
 ::selection {
   background: var(--primary);
