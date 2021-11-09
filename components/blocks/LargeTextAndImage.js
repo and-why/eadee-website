@@ -62,9 +62,10 @@ export const LargeTextAndImageBlock = ({ content }) => {
           </LargeTextBlock>
           {content.image && (
             <Image
-              src={`http://localhost:1337${content.image.formats.small.url}`}
-              height={content.image.formats.small.height}
-              width={content.image.formats.small.width}
+              src={`http://localhost:1337${content.image.url}`}
+              height={content.image.height}
+              width={content.image.width}
+              alt={content.image.alternativeText}
               objectFit='contain'
             />
           )}

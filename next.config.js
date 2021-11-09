@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'amazonaws.com'],
   },
   swcMinify: true,
 };
