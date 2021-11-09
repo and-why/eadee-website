@@ -24,7 +24,7 @@ export const FullWidthBlock = ({ content }) => {
           </TextBlock>
           <ImageBlock>
             <Image
-              src={`${server}${content.image.url}`}
+              src={`${process.NODE_ENV ? server : ''}${content.image.url}`}
               alt={content.image.alternativeText}
               width='1290px'
               height='800px'

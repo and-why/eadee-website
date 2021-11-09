@@ -108,7 +108,8 @@ export const ColouredBlock = ({ content }) => {
                 <FeaturedBlockContainer direction={block.direction}>
                   <ImageContainer>
                     <Image
-                      src={`${server}${block.image.url}`}
+                      src={`${process.NODE_ENV ? server : ''}${block.image.url}`}
+                      alt={block.image.alternativeText}
                       height='400px'
                       width='600px'
                       objectFit='contain'

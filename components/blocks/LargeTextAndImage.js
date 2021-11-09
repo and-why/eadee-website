@@ -3,6 +3,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
+import { server } from 'config';
 
 export const LargeTextAndImageBlock = ({ content }) => {
   //   {
@@ -62,10 +63,10 @@ export const LargeTextAndImageBlock = ({ content }) => {
           </LargeTextBlock>
           {content.image && (
             <Image
-              src={`http://localhost:1337${content.image.url}`}
+              src={`${process.NODE_ENV ? server : ''}${content.image.url}`}
+              alt={content.image.alternativeText}
               height={content.image.height}
               width={content.image.width}
-              alt={content.image.alternativeText}
               objectFit='contain'
             />
           )}
