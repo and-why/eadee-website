@@ -6,7 +6,7 @@ import { server } from '../config';
 
 export default function Home({ data }) {
   const [homepage] = data.filter((page) => page.page_title === 'homepage');
-  console.log(homepage.Body);
+  console.log('homepage body', homepage.Body);
   return (
     <Layout>
       {homepage.Header &&

@@ -29,6 +29,7 @@ export const FullWidthBlock = ({ content }) => {
               width='1290px'
               height='800px'
               objectFit='contain'
+              quality={100}
             />
           </ImageBlock>
         </FullWidthBlockContainer>

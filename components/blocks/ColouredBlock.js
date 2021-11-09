@@ -114,6 +114,7 @@ export const ColouredBlock = ({ content }) => {
                       width='600px'
                       objectFit='contain'
                       objectPosition='left'
+                      quality={100}
                     />
                   </ImageContainer>
                   <TextBlock>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
-import { server } from 'config';
+import server from 'config/server';
 
 export const LargeTextAndImageBlock = ({ content }) => {
   //   {
@@ -68,6 +68,7 @@ export const LargeTextAndImageBlock = ({ content }) => {
               height={content.image.height}
               width={content.image.width}
               objectFit='contain'
+              quality={100}
             />
           )}
         </FullPageCenteredBlockContainer>
