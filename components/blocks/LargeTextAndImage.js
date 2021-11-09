@@ -60,12 +60,14 @@ export const LargeTextAndImageBlock = ({ content }) => {
           <LargeTextBlock textPosition={content.text_placement}>
             <ReactMarkdown>{content.text}</ReactMarkdown>
           </LargeTextBlock>
-          <Image
-            src={`http://localhost:1337${content.image.formats.small.url}`}
-            height={content.image.formats.small.height}
-            width={content.image.formats.small.width}
-            objectFit='contain'
-          />
+          {content.image && (
+            <Image
+              src={`http://localhost:1337${content.image.formats.small.url}`}
+              height={content.image.formats.small.height}
+              width={content.image.formats.small.width}
+              objectFit='contain'
+            />
+          )}
         </FullPageCenteredBlockContainer>
       </Container>
     </Section>
