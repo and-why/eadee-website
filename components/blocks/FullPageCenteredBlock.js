@@ -20,10 +20,10 @@ export const FullPageCenteredBlock = ({ content }) => {
         <div className='block'>
           {content.title && <h1>{content.title}</h1>}
           {content.subtitle && (
-            <h2>
+            <p>
               {content.subtitle}
               {content.anotation && <span>{content.anotation}</span>}
-            </h2>
+            </p>
           )}
 
           <div className='button_footer'>
@@ -93,9 +93,10 @@ const FullPageCenteredContainer = styled.div`
     /* max-width: 450px;
     min-width: 350px; */
     text-align: center;
-    h2 {
+    p {
       position: relative;
       line-height: 1.5;
+      font-size: var(--m);
       span {
         position: absolute;
         right: 13px;

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { Container } from '../styled-components/Container';
+import { Section } from '../styled-components/Section';
 
 export const LargeTextAndImageBlock = ({ content }) => {
   //   {
@@ -53,26 +54,31 @@ export const LargeTextAndImageBlock = ({ content }) => {
   //     }
   // }
   return (
-    <Container>
-      <FullPageCenteredBlockContainer>
-        <LargeTextBlock textPosition={content.text_placement}>
-          <ReactMarkdown>{content.text}</ReactMarkdown>
-        </LargeTextBlock>
-        <Image
-          src={`http://localhost:1337${content.image.formats.small.url}`}
-          height={content.image.formats.small.height}
-          width={content.image.formats.small.width}
-          objectFit='contain'
-        />
-      </FullPageCenteredBlockContainer>
-    </Container>
+    <Section>
+      <Container>
+        <FullPageCenteredBlockContainer>
+          <LargeTextBlock textPosition={content.text_placement}>
+            <ReactMarkdown>{content.text}</ReactMarkdown>
+          </LargeTextBlock>
+          <Image
+            src={`http://localhost:1337${content.image.formats.small.url}`}
+            height={content.image.formats.small.height}
+            width={content.image.formats.small.width}
+            objectFit='contain'
+          />
+        </FullPageCenteredBlockContainer>
+      </Container>
+    </Section>
   );
 };
 
 export const FullPageCenteredBlockContainer = styled.div`
+  padding-top: 83px;
   display: grid;
+
+  margin: auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-column-gap: var(--n);
+  grid-gap: var(--l);
 `;
 
 export const LargeTextBlock = styled.div`

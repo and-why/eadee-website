@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Container } from './styled-components/Container';
 import useNav from './utils/useNav';
 import Link from 'next/link';
@@ -6,29 +6,34 @@ import Logo from './Logo';
 import { Button } from './styled-components/Button';
 import { useState } from 'react';
 
-export default function Navigation({ page }) {
+export default function Navigation({ page, menuToggle, setMenuToggle }) {
   const { nav, isLoading, isError } = useNav();
-  const [menuToggle, setMenuToggle] = useState(false);
+
   return (
-    <Container>
-      <NavigationContainer>
-        <Link href='/' passHref>
-          <LogoStyles>
-            <Logo />
-            <h2>Eadee</h2>
-          </LogoStyles>
-        </Link>
-        <Button className='mobile-menu' onClick={() => setMenuToggle(!menuToggle)}>
-          {menuToggle ? 'Close' : 'Menu'}
-        </Button>
-        <DesktopMenu>
-          <MenuItems nav={nav} />
-        </DesktopMenu>
-        <MobileMenu>
-          <MenuItems nav={nav} />
-        </MobileMenu>
-      </NavigationContainer>
-    </Container>
+    <NavigationOuterContainer>
+      <Container>
+        <NavigationInnerContainer>
+          <Link href='/' passHref>
+            <LogoStyles>
+              <Logo />
+              <h2>Eadee</h2>
+            </LogoStyles>
+          </Link>
+          <DesktopMenu>
+            <MenuItems nav={nav} />
+          </DesktopMenu>
+          <MobileMenu>
+            <Button className='mobile-menu' onClick={() => setMenuToggle(!menuToggle)}>
+              {menuToggle ? 'Close' : 'Menu'}
+            </Button>
+
+            <MobileMenuContainer menuToggle={menuToggle}>
+              <MenuItems nav={nav} />
+            </MobileMenuContainer>
+          </MobileMenu>
+        </NavigationInnerContainer>
+      </Container>
+    </NavigationOuterContainer>
   );
 }
 
@@ -61,15 +66,56 @@ const DesktopMenu = styled.div`
 
 const MobileMenu = styled.div`
   display: block;
+  @media (min-width: 800px) {
+    display: none;
+  }
+`;
+const MobileMenuContainer = styled.div`
+  position: fixed;
+  background: var(--white);
+  overflow: hidden;
+  max-height: 0px;
+  width: 100%;
+  top: 83px;
+  right: 0px;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  ${(props) =>
+    props.menuToggle &&
+    css`
+      padding: var(--l);
+      max-height: 100vh;
+      width: 100%;
+      top: 83px;
+      right: 0;
+      a {
+        color: var(--dark);
+        padding: var(--m) 0;
+        font-size: var(--l);
+        border-bottom: 2px solid var(--dark);
+        &:hover {
+          color: var(--dark);
+          border-bottom: 2px solid var(--dark);å
+        }
+      }
+    `}
 `;
 
-const NavigationContainer = styled.div`
+const NavigationOuterContainer = styled.div`
   margin: auto;
-  padding-top: 32px;
   position: sticky;
   top: 0px;
   z-index: 99;
   background: white;
+  justify-content: space-between;
+  display: flex;
+  margin: auto;
+`;
+const NavigationInnerContainer = styled.div`
+  margin: auto;
+  padding: var(--n) 0;
+  height: 83px;
   justify-content: space-between;
   display: flex;
   margin: auto;
