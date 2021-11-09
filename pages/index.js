@@ -30,10 +30,18 @@ export async function getStaticProps() {
       'Content-Type': 'application/json',
     },
   });
-
   const data = await res.json();
 
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
-    props: { data },
+    props: {
+      data,
+    },
+    revalidate: 10,
   };
 }
