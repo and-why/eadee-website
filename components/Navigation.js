@@ -19,18 +19,22 @@ export default function Navigation({ page, menuToggle, setMenuToggle }) {
               <h2>Eadee</h2>
             </LogoStyles>
           </Link>
-          <DesktopMenu>
-            <MenuItems nav={nav} />
-          </DesktopMenu>
-          <MobileMenu>
-            <Button className='mobile-menu' onClick={() => setMenuToggle(!menuToggle)}>
-              {menuToggle ? 'Close' : 'Menu'}
-            </Button>
+          {nav && (
+            <>
+              <DesktopMenu>
+                <MenuItems nav={nav} />
+              </DesktopMenu>
+              <MobileMenu>
+                <Button className='mobile-menu' onClick={() => setMenuToggle(!menuToggle)}>
+                  {menuToggle ? 'Close' : 'Menu'}
+                </Button>
 
-            <MobileMenuContainer menuToggle={menuToggle}>
-              <MenuItems nav={nav} />
-            </MobileMenuContainer>
-          </MobileMenu>
+                <MobileMenuContainer menuToggle={menuToggle}>
+                  <MenuItems nav={nav} />
+                </MobileMenuContainer>
+              </MobileMenu>
+            </>
+          )}
         </NavigationInnerContainer>
       </Container>
     </NavigationOuterContainer>
