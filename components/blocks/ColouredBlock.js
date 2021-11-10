@@ -151,6 +151,8 @@ export const ColouredBlockOuterContainer = styled.div`
   h2.title {
     width: 100%;
     text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--xl);
   }
   ${(props) =>
     props.bgColor &&
@@ -205,7 +207,7 @@ const FeaturedBlockContainer = styled.div`
     ${(props) =>
       props.layout === 'rows' &&
       css`
-        max-width: 900px;
+        max-width: 1000px;
         margin: auto;
       `};
   }
@@ -213,7 +215,7 @@ const FeaturedBlockContainer = styled.div`
 
 const TextBlock = styled.div`
   padding: var(--n);
-  align-self: center;
+  /* align-self: center; */
   @media (min-width: 700px) {
     padding: var(--xl);
     width: 100%;

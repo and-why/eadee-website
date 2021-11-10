@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 export default function Navigation({ page, menuToggle, setMenuToggle }) {
   const { nav, isLoading, isError } = useNav();
-  console.log('nav', nav);
+
   if (isError) {
     return null;
   }
@@ -66,7 +66,9 @@ export const MenuItems = ({ nav }) => {
     <>
       {nav &&
         nav.body.map((item) => {
-          return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
+          if (item.url || item.page) {
+            return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
+          }
         })}
     </>
   );

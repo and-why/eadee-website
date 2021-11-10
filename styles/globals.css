@@ -131,6 +131,15 @@ h3 {
   font-weight: 900;
 }
 @media (min-width: 800px) {
+  h1 {
+    font-size: var(--xxl);
+  }
+  h2 {
+    font-size: var(--xl);
+  }
+  h3 {
+    font-size: var(--l);
+  }
 }
 ::selection {
   background: var(--primary);
