@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
+import Logo from './Logo';
 import { Container } from './styled-components/Container';
 import useFooter from './utils/useFooter';
 
 export default function Footer() {
   const { footer, isLoading, isError } = useFooter();
   console.log('footer', footer);
+  if (isError) {
+    return null;
+  }
   return footer ? (
     <FooterOuterContainer>
       <Container>
