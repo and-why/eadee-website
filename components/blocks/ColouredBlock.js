@@ -14,7 +14,7 @@ export const ColouredBlock = ({ content }) => {
         roughEdge={content.rough_edge}
       >
         <Container>
-          <h2 className='title'>{content.title}</h2>
+          {content.title && <h2 className='title'>{content.title}</h2>}
           <FeaturedBlocksContainer layout={content.layout}>
             {content.feature_block_image_text.map((block) => {
               return (
@@ -22,24 +22,30 @@ export const ColouredBlock = ({ content }) => {
                   layout={content.layout}
                   image_text_direction={block.image_text_direction}
                 >
-                  <ImageContainer>
-                    <Image
-                      src={`${
-                        process.env.NODE_ENV === 'production'
-                          ? block.image.url
-                          : `http://localhost:1337${block.image.url}`
-                      }`}
-                      alt={block.image.alternativeText}
-                      height='400px'
-                      width='600px'
-                      objectFit='contain'
-                      objectPosition='left'
-                      quality={100}
-                    />
-                  </ImageContainer>
+                  {block.image && (
+                    <ImageContainer>
+                      <Image
+                        src={`${
+                          process.env.NODE_ENV === 'production'
+                            ? block.image.url
+                            : `http://localhost:1337${block.image.url}`
+                        }`}
+                        alt={block.image.alternativeText}
+                        height='400px'
+                        width='600px'
+                        objectFit='contain'
+                        objectPosition='left'
+                        quality={100}
+                      />
+                    </ImageContainer>
+                  )}
                   <TextBlock layout={content.layout}>
-                    <h3>{block.title}</h3>
-                    <p>{block.subtitle}</p>
+                    {(block.title || block.subtitle) && (
+                      <>
+                        <h3>{block.title}</h3>
+                        <p>{block.subtitle}</p>
+                      </>
+                    )}
 
                     {block.button_text && block.button_url && (
                       <ButtonFooter>
@@ -171,6 +177,7 @@ const FeaturedBlocksContainer = styled.div`
   grid-template-columns: 1fr;
   column-gap: var(--l);
   row-gap: var(--n);
+  justify-content: start;
   h3 {
     font-weight: 900;
   }
