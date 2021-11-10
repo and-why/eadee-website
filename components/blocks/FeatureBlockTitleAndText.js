@@ -32,6 +32,7 @@ export const FeatureBlockTitleAndText = ({ content }) => {
       >
         <Container>
           <FeatureBlockTitleAndTextInnerContainer>
+            <h2 className='title'>{content.title}</h2>
             {content.feature_block_title_text.map((block) => {
               return (
                 <>
@@ -53,9 +54,11 @@ const FeatureBlockTitleAndTextInnerContainer = styled.div`
   max-width: 900px;
   margin: auto;
   display: grid;
-  align-items: top;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: var(--l);
+  h2 {
+    text-align: left;
+  }
 `;
 
 const Title = styled.h2`
@@ -63,6 +66,6 @@ const Title = styled.h2`
   margin: 0px;
 `;
 
-const TextBlock = styled.p`
+const TextBlock = styled.div`
   font-size: var(--n);
 `;

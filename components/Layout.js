@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useState } from 'react';
+import Footer from './Footer';
 import Navigation from './Navigation';
 
 export default function Layout({ children, page, title, description }) {
@@ -17,6 +18,7 @@ export default function Layout({ children, page, title, description }) {
       </Head>
       <Navigation page={page} menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
       {!menuToggle && <div>{children}</div>}
+      <Footer />
     </>
   );
 }

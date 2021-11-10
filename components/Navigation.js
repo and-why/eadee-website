@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled, { css } from 'styled-components';
 import { Container } from './styled-components/Container';
 import useNav from './utils/useNav';
@@ -8,14 +9,30 @@ import { useState } from 'react';
 
 export default function Navigation({ page, menuToggle, setMenuToggle }) {
   const { nav, isLoading, isError } = useNav();
-
+  console.log('nav', nav);
   return (
     <NavigationOuterContainer>
       <Container>
         <NavigationInnerContainer>
           <Link href='/' passHref>
             <LogoStyles>
-              <Logo />
+              {nav?.logo ? (
+                <Image
+                  src={`${
+                    process.env.NODE_ENV === 'production'
+                      ? nav.logo.url
+                      : `http://localhost:1337${nav.logo.url}`
+                  }`}
+                  alt={nav.logo.alternativeText}
+                  height='51px'
+                  width='51px'
+                  objectFit='contain'
+                  objectPosition='left'
+                  quality={100}
+                />
+              ) : (
+                <Logo />
+              )}
               <h2>Eadee</h2>
             </LogoStyles>
           </Link>
@@ -46,7 +63,7 @@ export const MenuItems = ({ nav }) => {
     <>
       {nav &&
         nav.body.map((item) => {
-          return <Link href={item.url ? item.url : item.page.slug}>{item.label}</Link>;
+          return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
         })}
     </>
   );

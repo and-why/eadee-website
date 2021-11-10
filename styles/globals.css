@@ -96,10 +96,9 @@ a {
 
 a {
   color: var(--primary);
-  border-bottom: 2px solid transparent;
 }
 a:hover {
-  border-bottom: 2px solid var(--primary-80);
+  text-decoration: underline;
   color: var(--primary-80);
 }
 p {

@@ -93,6 +93,7 @@ import { Section } from '../styled-components/Section';
 import { Button } from '../styled-components/Button';
 
 export const ColouredBlock = ({ content }) => {
+  console.log('server', server);
   return (
     <Section>
       <ColouredBlockOuterContainer
@@ -101,14 +102,18 @@ export const ColouredBlock = ({ content }) => {
         roughEdge={content.rough_edge}
       >
         <Container>
-          <h2>{content.title}</h2>
+          <h2 className='title'>{content.title}</h2>
           <FeaturedBlocksContainer direction={content.direction}>
             {content.feature_block_image_text.map((block) => {
               return (
                 <FeaturedBlockContainer direction={block.direction}>
                   <ImageContainer>
                     <Image
-                      src={`${process.NODE_ENV ? server : ''}${block.image.url}`}
+                      src={`${
+                        process.env.NODE_ENV === 'production'
+                          ? block.image.url
+                          : `http://localhost:1337${block.image.url}`
+                      }`}
                       alt={block.image.alternativeText}
                       height='400px'
                       width='600px'
@@ -228,7 +233,7 @@ export const ColouredBlockOuterContainer = styled.div`
           `};
       }
     `};
-  h2 {
+  h2.title {
     width: 100%;
     text-align: center;
   }
