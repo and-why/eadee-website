@@ -10,6 +10,9 @@ import { useState } from 'react';
 export default function Navigation({ page, menuToggle, setMenuToggle }) {
   const { nav, isLoading, isError } = useNav();
   console.log('nav', nav);
+  if (isError) {
+    return null;
+  }
   return (
     <NavigationOuterContainer>
       <Container>
