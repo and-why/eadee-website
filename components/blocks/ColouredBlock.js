@@ -169,8 +169,8 @@ export const ColouredBlockOuterContainer = styled.div`
 const FeaturedBlocksContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  /* grid-gap: var(--l); */
   column-gap: var(--l);
+  row-gap: var(--n);
   h3 {
     font-weight: 900;
   }
@@ -215,13 +215,15 @@ const FeaturedBlockContainer = styled.div`
 
 const TextBlock = styled.div`
   padding: var(--n);
+  width: 100%;
   /* align-self: center; */
   @media (min-width: 700px) {
     padding: var(--xl);
-    width: 100%;
+    width: 70%;
     ${(props) =>
       props.layout === 'columns' &&
       css`
+        width: 100%;
         padding: var(--n);
       `};
   }
