@@ -58,4 +58,7 @@ const TextBlock = styled.div`
 `;
 const ImageBlock = styled.div`
   padding: var(--l) 0;
+  img {
+    border-radius: var(--l);
+  }
 `;

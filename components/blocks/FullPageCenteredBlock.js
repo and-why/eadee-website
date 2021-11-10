@@ -2,33 +2,19 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { Button } from '../styled-components/Button';
 import { Section } from '../styled-components/Section';
+import ReactMarkdown from 'react-markdown';
 
 export const FullPageCenteredBlock = ({ content }) => {
-  //   {
-  //     "__component": "blocks.full-page-block",
-  //     "id": 1,
-  //     "title": "Eadee:",
-  //     "subtitle": "A simple Employee Directory (E.D.) you employees will use.",
-  //     "button_text": "Get started for free",
-  //     "button_aside_text": "No credit card needed"
-  //     "anotation": "probably"
-  // }
-
   return (
     <Section>
       <FullPageCenteredContainer>
         <div className='block'>
           {content.title && <h1>{content.title}</h1>}
-          {content.subtitle && (
-            <p>
-              {content.subtitle}
-              {content.anotation && <span>{content.anotation}</span>}
-            </p>
-          )}
+          {content.subtitle && <ReactMarkdown>{content.subtitle}</ReactMarkdown>}
 
           <div className='button_footer'>
             {content.button_text && (
-              <Link href='https://app.eadee.co/signin/create-account' passHref>
+              <Link href={content.button_url} passHref>
                 <Button primary>{content.button_text}</Button>
               </Link>
             )}
@@ -80,7 +66,7 @@ const FullPageCenteredContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 80vh;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -97,20 +83,23 @@ const FullPageCenteredContainer = styled.div`
       position: relative;
       line-height: 1.5;
       font-size: var(--m);
-      span {
-        position: absolute;
-        right: 13px;
-        font-family: var(--font-cursive);
-        color: var(--primary);
-        font-size: 16px;
-        bottom: 25px;
-        transform: rotate(-5deg);
-        &:after {
-          transform: rotate(5deg);
-          content: '^';
+      em {
+        position: relative;
+        width: 0px;
+        strong {
           position: absolute;
-          bottom: -32px;
-          left: 17px;
+          bottom: 24px;
+          font-family: var(--font-cursive);
+          color: var(--primary);
+          font-size: 16px;
+          transform: rotate(-5deg) translateX(-50%);
+          &:after {
+            transform: rotate(5deg);
+            content: '^';
+            position: absolute;
+            bottom: -32px;
+            left: 30%;
+          }
         }
       }
     }

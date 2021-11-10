@@ -6,7 +6,7 @@ import { server } from '../config';
 
 export default function Home({ data }) {
   const [homepage] = data.filter((page) => page.page_title === 'homepage');
-  console.log('homepage body', homepage.Body);
+  console.log('homepage body', homepage);
   return (
     <Layout>
       {homepage.Header &&
@@ -37,7 +37,7 @@ export async function getStaticProps() {
       notFound: true,
     };
   }
-
+  console.log('data', data);
   return {
     props: {
       data,

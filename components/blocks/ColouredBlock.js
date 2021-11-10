@@ -1,99 +1,11 @@
-// {
-//   "__component": "blocks.coloured-block",
-//   "id": 1,
-//   "background_colour": "dark",
-//   "title": "Give your organisation greater transparency",
-//   "direction": "column",
-//   "text_color": "white",
-//   "feature_block_image_text": [
-//       {
-//           "id": 1,
-//           "title": "Learn more about your colleagues",
-//           "subtitle": "Detailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust",
-//           "button_text": null,
-//           "direction": "row",
-//           "image": {
-//               "id": 2,
-//               "name": "employee-directory.png",
-//               "alternativeText": "",
-//               "caption": "",
-//               "width": 353,
-//               "height": 253,
-//               "formats": {
-//                   "thumbnail": {
-//                       "name": "thumbnail_employee-directory.png",
-//                       "hash": "thumbnail_employee_directory_3ec37f4b29",
-//                       "ext": ".png",
-//                       "mime": "image/png",
-//                       "width": 218,
-//                       "height": 156,
-//                       "size": 31.7,
-//                       "path": null,
-//                       "url": "/uploads/thumbnail_employee_directory_3ec37f4b29.png"
-//                   }
-//               },
-//               "hash": "employee_directory_3ec37f4b29",
-//               "ext": ".png",
-//               "mime": "image/png",
-//               "size": 36.24,
-//               "url": "/uploads/employee_directory_3ec37f4b29.png",
-//               "previewUrl": null,
-//               "provider": "local",
-//               "provider_metadata": null,
-//               "created_at": "2021-11-03T03:09:17.570Z",
-//               "updated_at": "2021-11-03T03:09:17.576Z"
-//           }
-//       },
-//       {
-//           "id": 2,
-//           "title": "Learn more about yourself",
-//           "subtitle": "Detailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust",
-//           "button_text": null,
-//           "direction": "row",
-//           "image": {
-//               "id": 2,
-//               "name": "employee-directory.png",
-//               "alternativeText": "",
-//               "caption": "",
-//               "width": 353,
-//               "height": 253,
-//               "formats": {
-//                   "thumbnail": {
-//                       "name": "thumbnail_employee-directory.png",
-//                       "hash": "thumbnail_employee_directory_3ec37f4b29",
-//                       "ext": ".png",
-//                       "mime": "image/png",
-//                       "width": 218,
-//                       "height": 156,
-//                       "size": 31.7,
-//                       "path": null,
-//                       "url": "/uploads/thumbnail_employee_directory_3ec37f4b29.png"
-//                   }
-//               },
-//               "hash": "employee_directory_3ec37f4b29",
-//               "ext": ".png",
-//               "mime": "image/png",
-//               "size": 36.24,
-//               "url": "/uploads/employee_directory_3ec37f4b29.png",
-//               "previewUrl": null,
-//               "provider": "local",
-//               "provider_metadata": null,
-//               "created_at": "2021-11-03T03:09:17.570Z",
-//               "updated_at": "2021-11-03T03:09:17.576Z"
-//           }
-//       }
-//   ]
-// }
 import Image from 'next/image';
 import Link from 'next/link';
-import { server } from 'config';
 import styled, { css } from 'styled-components';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
 import { Button } from '../styled-components/Button';
 
 export const ColouredBlock = ({ content }) => {
-  console.log('server', server);
   return (
     <Section>
       <ColouredBlockOuterContainer
@@ -103,10 +15,13 @@ export const ColouredBlock = ({ content }) => {
       >
         <Container>
           <h2 className='title'>{content.title}</h2>
-          <FeaturedBlocksContainer direction={content.direction}>
+          <FeaturedBlocksContainer layout={content.layout}>
             {content.feature_block_image_text.map((block) => {
               return (
-                <FeaturedBlockContainer direction={block.direction}>
+                <FeaturedBlockContainer
+                  layout={content.layout}
+                  image_text_direction={block.image_text_direction}
+                >
                   <ImageContainer>
                     <Image
                       src={`${
@@ -122,7 +37,7 @@ export const ColouredBlock = ({ content }) => {
                       quality={100}
                     />
                   </ImageContainer>
-                  <TextBlock>
+                  <TextBlock layout={content.layout}>
                     <h3>{block.title}</h3>
                     <p>{block.subtitle}</p>
 
@@ -252,13 +167,14 @@ export const ColouredBlockOuterContainer = styled.div`
 const FeaturedBlocksContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: var(--l);
+  /* grid-gap: var(--l); */
+  column-gap: var(--l);
   h3 {
     font-weight: 900;
   }
   @media (min-width: 700px) {
     ${(props) =>
-      props.direction == 'row' &&
+      props.layout == 'columns' &&
       css`
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       `};
@@ -269,13 +185,25 @@ const FeaturedBlockContainer = styled.div`
   flex-direction: column;
   width: 100%;
   @media (min-width: 700px) {
+    flex-direction: row;
     ${(props) =>
-      props.direction &&
+      props.layout === 'columns' &&
       css`
-        flex-direction: ${props.direction};
+        flex-direction: column;
       `};
     ${(props) =>
-      props.direction === 'row' &&
+      props.image_text_direction === 'reverse' &&
+      css`
+        flex-direction: row-reverse;
+      `};
+    ${(props) =>
+      props.image_text_direction === 'reverse' &&
+      props.layout === 'columns' &&
+      css`
+        flex-direction: column-reverse;
+      `};
+    ${(props) =>
+      props.layout === 'rows' &&
       css`
         max-width: 900px;
         margin: auto;
@@ -284,10 +212,16 @@ const FeaturedBlockContainer = styled.div`
 `;
 
 const TextBlock = styled.div`
-  padding: var(--n) 0;
-  /* width: 100%; */
+  padding: var(--n);
+  align-self: center;
   @media (min-width: 700px) {
+    padding: var(--xl);
     width: 100%;
+    ${(props) =>
+      props.layout === 'columns' &&
+      css`
+        padding: var(--n);
+      `};
   }
 `;
 const ButtonFooter = styled.div`
@@ -296,6 +230,14 @@ const ButtonFooter = styled.div`
 const ImageContainer = styled.div`
   display: flex;
   width: 100%;
+  padding: var(--n);
+  span {
+    overflow: visible !important;
+  }
+  img {
+    border-radius: var(--m);
+    box-shadow: 0 4px var(--n) 0 rgba(0, 0, 0, 0.15);
+  }
   @media (min-width: 700px) {
     width: 100%;
     align-items: center;

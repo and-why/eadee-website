@@ -84,7 +84,6 @@ export const LargeTextAndImageBlock = ({ content }) => {
 export const FullPageCenteredBlockContainer = styled.div`
   padding-top: 83px;
   display: grid;
-
   margin: auto;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: var(--l);
