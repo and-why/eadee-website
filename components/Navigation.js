@@ -152,7 +152,7 @@ export const LogoStyles = styled.div`
   align-items: center;
   cursor: pointer;
   h2 {
-    font-size: 2em;
+    font-size: var(--l);
     font-weight: 900;
     margin: 0;
     margin-left: 10px;

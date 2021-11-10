@@ -14,22 +14,8 @@ export default function Footer() {
   return footer ? (
     <FooterOuterContainer>
       <Container>
-        <FooterInnerContainer>
-          <FooterTopLevel>
-            {footer.nav_menus &&
-              footer.nav_menus.map((item) => {
-                return (
-                  <FooterNavMenu key={item.id}>
-                    {item.nav_link ? (
-                      <NavMenu menu={item} />
-                    ) : (
-                      <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>
-                    )}
-                  </FooterNavMenu>
-                );
-              })}
-          </FooterTopLevel>
-          <FooterBottomLevel>
+        <CompanyInfoContainer>
+          <LogoContainer>
             {footer.logo ? (
               <Image
                 src={`${
@@ -47,7 +33,33 @@ export default function Footer() {
             ) : (
               <Logo />
             )}
-          </FooterBottomLevel>
+            <h2>Eadee</h2>
+          </LogoContainer>
+          <p>Employee Directory, ED, Eadee. Get it?</p>
+        </CompanyInfoContainer>
+        <FooterInnerContainer>
+          <FooterTopLevel>
+            {footer.nav_menus &&
+              footer.nav_menus.map((item) => {
+                return (
+                  <FooterNavMenu key={item.id}>
+                    {item.nav_link ? (
+                      <NavMenu menu={item} />
+                    ) : (
+                      <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>
+                    )}
+                  </FooterNavMenu>
+                );
+              })}
+          </FooterTopLevel>
+          {footer.legal_menu && (
+            <FooterBottomLevel>
+              © {new Date().getFullYear()} Eadee.
+              {footer.legal_menu.map((item) => {
+                return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
+              })}
+            </FooterBottomLevel>
+          )}
         </FooterInnerContainer>
       </Container>
     </FooterOuterContainer>
@@ -72,34 +84,59 @@ const NavMenu = ({ menu }) => {
 const FooterOuterContainer = styled.div`
   background-color: var(--dark);
   width: 100%;
+  padding: var(--xl) 0;
 `;
 
 const FooterInnerContainer = styled.div`
   width: 100%;
   color: white;
-  padding: var(--xxl) 0;
   font-size: var(--n);
   h4 {
     margin-top: 0;
   }
 `;
+const CompanyInfoContainer = styled.div`
+  p {
+    color: var(--darkgray);
+    margin: var(--s) 0;
+    font-size: var(--n);
+  }
+`;
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  h2 {
+    color: white;
+    margin: 0;
+    font-size: var(--l);
+    font-weight: 900;
+    margin: 0;
+    margin-left: 10px;
+  }
+`;
 
 const FooterTopLevel = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: var(--n);
+  display: flex;
   flex-direction: column;
-  margin-bottom: var(--xl);
+  grid-gap: var(--n);
+  margin: var(--xl) 0;
+  align-items: start;
+  justify-items: start;
   a {
     color: white;
     &:hover {
       border-color: white;
     }
   }
-  img {
+  img,
+  svg {
     width: 50px;
     height: 50px;
+  }
+  @media (min-width: 500px) {
+    display: flex;
+    flex-direction: row;
   }
 `;
 const FooterNavMenu = styled.div`
@@ -113,4 +150,11 @@ const NavMenuStyles = styled.div`
     margin-bottom: var(--xs);
   }
 `;
-const FooterBottomLevel = styled.div``;
+const FooterBottomLevel = styled.div`
+  display: flex;
+  grid-gap: var(--s);
+  font-size: var(--s);
+  a {
+    color: white;
+  }
+`;
