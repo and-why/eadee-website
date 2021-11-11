@@ -3,57 +3,8 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
-import server from '../../config';
 
 export const LargeTextAndImageBlock = ({ content }) => {
-  //   {
-  //     "__component": "blocks.large-text-and-image",
-  //     "id": 1,
-  //     "text": "Great teams grow when everyone knows [who is who](/employee-directory), [where they fit in](/org-chart), and how they can [interact with each other](/employee-guides).",
-  //     "text_placement": "left",
-  //     "image": {
-  //         "id": 1,
-  //         "name": "two-image-screenshots.png",
-  //         "alternativeText": "",
-  //         "caption": "",
-  //         "width": 582,
-  //         "height": 682,
-  //         "formats": {
-  //             "thumbnail": {
-  //                 "name": "thumbnail_two-image-screenshots.png",
-  //                 "hash": "thumbnail_two_image_screenshots_bb8b465e3e",
-  //                 "ext": ".png",
-  //                 "mime": "image/png",
-  //                 "width": 133,
-  //                 "height": 156,
-  //                 "size": 17.45,
-  //                 "path": null,
-  //                 "url": "/uploads/thumbnail_two_image_screenshots_bb8b465e3e.png"
-  //             },
-  //             "small": {
-  //                 "name": "small_two-image-screenshots.png",
-  //                 "hash": "small_two_image_screenshots_bb8b465e3e",
-  //                 "ext": ".png",
-  //                 "mime": "image/png",
-  //                 "width": 427,
-  //                 "height": 500,
-  //                 "size": 121.31,
-  //                 "path": null,
-  //                 "url": "/uploads/small_two_image_screenshots_bb8b465e3e.png"
-  //             }
-  //         },
-  //         "hash": "two_image_screenshots_bb8b465e3e",
-  //         "ext": ".png",
-  //         "mime": "image/png",
-  //         "size": 114.71,
-  //         "url": "/uploads/two_image_screenshots_bb8b465e3e.png",
-  //         "previewUrl": null,
-  //         "provider": "local",
-  //         "provider_metadata": null,
-  //         "created_at": "2021-11-03T03:06:37.892Z",
-  //         "updated_at": "2021-11-03T03:06:37.896Z"
-  //     }
-  // }
   return (
     <Section>
       <Container>
@@ -61,20 +12,35 @@ export const LargeTextAndImageBlock = ({ content }) => {
           <LargeTextBlock textPosition={content.text_placement}>
             <ReactMarkdown>{content.text}</ReactMarkdown>
           </LargeTextBlock>
-          {content.image && (
-            <Image
-              src={`${
-                process.env.NODE_ENV === 'production'
-                  ? content.image.url
-                  : `http://localhost:1337${content.image.url}`
-              }`}
-              alt={content.image.alternativeText}
-              height={content.image.height}
-              width={content.image.width}
-              objectFit='contain'
-              quality={100}
-            />
-          )}
+          {content.image &&
+            (content.image.ext === '.webm' ? (
+              <video autoPlay='true' controls='false' disablePictureInPicture='true' loop='true'>
+                <source
+                  type='video/webm'
+                  src={`${
+                    process.env.NODE_ENV === 'production'
+                      ? content.image.url
+                      : `http://localhost:1337${content.image.url}`
+                  }`}
+                />
+                <p>
+                  Your browser cannot play this video. Upgrade to the latest Chrome, or Firefox.
+                </p>
+              </video>
+            ) : (
+              <Image
+                src={`${
+                  process.env.NODE_ENV === 'production'
+                    ? content.image.url
+                    : `http://localhost:1337${content.image.url}`
+                }`}
+                alt={content.image.alternativeText}
+                height={content.image.height}
+                width={content.image.width}
+                objectFit='contain'
+                quality={100}
+              />
+            ))}
         </FullPageCenteredBlockContainer>
       </Container>
     </Section>
@@ -87,6 +53,9 @@ export const FullPageCenteredBlockContainer = styled.div`
   margin: auto;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: var(--l);
+  video {
+    width: 100%;
+  }
 `;
 
 export const LargeTextBlock = styled.div`
