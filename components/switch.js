@@ -3,6 +3,7 @@ import { FeatureBlockTitleAndText } from './blocks/FeatureBlockTitleAndText';
 import { FullPageCenteredBlock } from './blocks/FullPageCenteredBlock';
 import { FullWidthBlock } from './blocks/FullWidthBlock';
 import { LargeTextAndImageBlock } from './blocks/LargeTextAndImage';
+import FeatureBlockImageTextOnly from './FeatureBlockImageTextOnly';
 
 export function componentSwitch(block) {
   console.log('block', block);
@@ -17,6 +18,8 @@ export function componentSwitch(block) {
       return <FullWidthBlock content={block} />;
     case 'blocks.feature-block-title-and-text':
       return <FeatureBlockTitleAndText content={block} />;
+    case 'blocks.feature-block-image-text':
+      return <FeatureBlockImageTextOnly content={block} />;
     default:
       return <p>No block Found</p>;
   }

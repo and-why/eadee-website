@@ -4,6 +4,8 @@ import styled, { css } from 'styled-components';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
 import { Button } from '../styled-components/Button';
+import ReactMarkdown from 'react-markdown';
+import { FeatureBlockImageText } from './FeatureBlockImageText';
 
 export const ColouredBlock = ({ content }) => {
   return (
@@ -17,46 +19,7 @@ export const ColouredBlock = ({ content }) => {
           {content.title && <h2 className='title'>{content.title}</h2>}
           <FeaturedBlocksContainer layout={content.layout}>
             {content.feature_block_image_text.map((block) => {
-              return (
-                <FeaturedBlockContainer
-                  layout={content.layout}
-                  image_text_direction={block.image_text_direction}
-                >
-                  {block.image && (
-                    <ImageContainer>
-                      <Image
-                        src={`${
-                          process.env.NODE_ENV === 'production'
-                            ? block.image.url
-                            : `http://localhost:1337${block.image.url}`
-                        }`}
-                        alt={block.image.alternativeText}
-                        height='400px'
-                        width='600px'
-                        objectFit='contain'
-                        objectPosition='left'
-                        quality={100}
-                      />
-                    </ImageContainer>
-                  )}
-                  <TextBlock layout={content.layout}>
-                    {(block.title || block.subtitle) && (
-                      <>
-                        <h3>{block.title}</h3>
-                        <p>{block.subtitle}</p>
-                      </>
-                    )}
-
-                    {block.button_text && block.button_url && (
-                      <ButtonFooter>
-                        <Link href={block.button_url} passHref>
-                          <Button>{block.button_text}</Button>
-                        </Link>
-                      </ButtonFooter>
-                    )}
-                  </TextBlock>
-                </FeaturedBlockContainer>
-              );
+              return <FeatureBlockImageText content={block} />;
             })}
           </FeaturedBlocksContainer>
         </Container>
@@ -71,9 +34,7 @@ export const ColouredBlockOuterContainer = styled.div`
   background: var(--primary);
   display: flex;
   position: relative;
-  h2 {
-    margin: 0 0 1em 0;
-  }
+
   ${(props) =>
     props.roughEdge === 'bottom' &&
     css`
@@ -178,79 +139,12 @@ const FeaturedBlocksContainer = styled.div`
   column-gap: var(--l);
   row-gap: var(--n);
   justify-content: start;
-  h3 {
-    font-weight: 900;
-  }
+
   @media (min-width: 700px) {
     ${(props) =>
       props.layout == 'columns' &&
       css`
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       `};
-  }
-`;
-const FeaturedBlockContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  @media (min-width: 700px) {
-    flex-direction: row;
-    ${(props) =>
-      props.layout === 'columns' &&
-      css`
-        flex-direction: column;
-      `};
-    ${(props) =>
-      props.image_text_direction === 'reverse' &&
-      css`
-        flex-direction: row-reverse;
-      `};
-    ${(props) =>
-      props.image_text_direction === 'reverse' &&
-      props.layout === 'columns' &&
-      css`
-        flex-direction: column-reverse;
-      `};
-    ${(props) =>
-      props.layout === 'rows' &&
-      css`
-        max-width: 1000px;
-        margin: auto;
-      `};
-  }
-`;
-
-const TextBlock = styled.div`
-  padding: var(--n);
-  width: 100%;
-  /* align-self: center; */
-  @media (min-width: 700px) {
-    padding: var(--xl);
-    width: 70%;
-    ${(props) =>
-      props.layout === 'columns' &&
-      css`
-        width: 100%;
-        padding: var(--n);
-      `};
-  }
-`;
-const ButtonFooter = styled.div`
-  margin-top: var(--m);
-`;
-const ImageContainer = styled.div`
-  display: flex;
-  width: 100%;
-  padding: var(--n);
-  span {
-    overflow: visible !important;
-  }
-  img {
-    border-radius: var(--m);
-    box-shadow: 0 4px var(--n) 0 rgba(0, 0, 0, 0.15);
-  }
-  @media (min-width: 700px) {
-    width: 100%;
-    align-items: center;
   }
 `;

@@ -133,10 +133,11 @@ const NavigationOuterContainer = styled.div`
   position: sticky;
   top: 0px;
   z-index: 99;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   justify-content: space-between;
   display: flex;
-  margin: auto;
+  margin: 10px auto;
+  backdrop-filter: blur(2px);
 `;
 const NavigationInnerContainer = styled.div`
   margin: auto;

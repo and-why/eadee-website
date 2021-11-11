@@ -150,6 +150,7 @@ const NavMenuStyles = styled.div`
     margin-bottom: var(--xs);
   }
 `;
+
 const FooterBottomLevel = styled.div`
   display: flex;
   grid-gap: var(--s);
