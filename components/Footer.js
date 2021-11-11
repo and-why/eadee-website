@@ -1,3 +1,4 @@
+import { getFooter } from '@/lib/api';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -7,63 +8,68 @@ import useFooter from './utils/useFooter';
 
 export default function Footer() {
   const { footer, isLoading, isError } = useFooter();
+  // const footer = getFooter();
   console.log('footer', footer);
   if (isError) {
     return null;
   }
-  return footer ? (
-    <FooterOuterContainer>
-      <Container>
-        <CompanyInfoContainer>
-          <LogoContainer>
-            {footer.logo ? (
-              <Image
-                src={`${
-                  process.env.NODE_ENV === 'production'
-                    ? footer.logo.url
-                    : `http://localhost:1337${footer.logo.url}`
-                }`}
-                alt={footer.logo.alternativeText}
-                height='51px'
-                width='51px'
-                objectFit='contain'
-                objectPosition='center'
-                quality={100}
-              />
-            ) : (
-              <Logo />
+
+  if (footer) {
+    return (
+      <FooterOuterContainer>
+        <Container>
+          <CompanyInfoContainer>
+            <LogoContainer>
+              {footer.logo ? (
+                <Image
+                  src={`${
+                    process.env.NODE_ENV === 'production'
+                      ? footer.logo.url
+                      : `http://localhost:1337${footer.logo.url}`
+                  }`}
+                  alt={footer.logo.alternativeText}
+                  height='51px'
+                  width='51px'
+                  objectFit='contain'
+                  objectPosition='center'
+                  quality={100}
+                />
+              ) : (
+                <Logo />
+              )}
+              <h2>Eadee</h2>
+            </LogoContainer>
+            <p>Employee Directory, ED, Eadee. Get it?</p>
+          </CompanyInfoContainer>
+          <FooterInnerContainer>
+            <FooterTopLevel>
+              {footer.nav_menus &&
+                footer.nav_menus.map((item) => {
+                  return (
+                    <FooterNavMenu key={item.id}>
+                      {item.nav_link ? (
+                        <NavMenu menu={item} />
+                      ) : (
+                        <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>
+                      )}
+                    </FooterNavMenu>
+                  );
+                })}
+            </FooterTopLevel>
+            {footer.legal_menu && (
+              <FooterBottomLevel>
+                © {new Date().getFullYear()} Eadee.
+                {footer.legal_menu.map((item) => {
+                  return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
+                })}
+              </FooterBottomLevel>
             )}
-            <h2>Eadee</h2>
-          </LogoContainer>
-          <p>Employee Directory, ED, Eadee. Get it?</p>
-        </CompanyInfoContainer>
-        <FooterInnerContainer>
-          <FooterTopLevel>
-            {footer.nav_menus &&
-              footer.nav_menus.map((item) => {
-                return (
-                  <FooterNavMenu key={item.id}>
-                    {item.nav_link ? (
-                      <NavMenu menu={item} />
-                    ) : (
-                      <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>
-                    )}
-                  </FooterNavMenu>
-                );
-              })}
-          </FooterTopLevel>
-          {footer.legal_menu && (
-            <FooterBottomLevel>
-              © {new Date().getFullYear()} Eadee.
-              {footer.legal_menu.map((item) => {
-                return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
-              })}
-            </FooterBottomLevel>
-          )}
-        </FooterInnerContainer>
-      </Container>
-    </FooterOuterContainer>
-  ) : null;
+          </FooterInnerContainer>
+        </Container>
+      </FooterOuterContainer>
+    );
+  }
+  return <p>Create a footer</p>;
 }
 
 const NavMenu = ({ menu }) => {
