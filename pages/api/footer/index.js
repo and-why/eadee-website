@@ -1,7 +1,5 @@
-import { server } from '../../../config';
-
 export default async function handler(req, res) {
-  const result = await fetch(`${server}/footer-nav`, {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/footer-nav`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
