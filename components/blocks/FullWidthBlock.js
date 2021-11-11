@@ -58,7 +58,11 @@ const TextBlock = styled.div`
 `;
 const ImageBlock = styled.div`
   padding: var(--l) 0;
+  transition: all 0.25s ease;
   img {
+    transition: all 0.25s ease;
     border-radius: var(--l);
+    box-shadow: 0 4px var(--n) 0 rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
   }
 `;

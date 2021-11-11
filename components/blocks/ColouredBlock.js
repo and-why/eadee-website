@@ -19,7 +19,7 @@ export const ColouredBlock = ({ content }) => {
           {content.title && <h2 className='title'>{content.title}</h2>}
           <FeaturedBlocksContainer layout={content.layout}>
             {content.feature_block_image_text.map((block) => {
-              return <FeatureBlockImageText content={block} />;
+              return <FeatureBlockImageText content={block} layout={content.layout} />;
             })}
           </FeaturedBlocksContainer>
         </Container>

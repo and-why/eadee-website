@@ -6,12 +6,9 @@ import styled, { css } from 'styled-components';
 import { Button } from '../styled-components/Button';
 import ReactMarkdown from 'react-markdown';
 
-export function FeatureBlockImageText({ content }) {
+export function FeatureBlockImageText({ content, layout }) {
   return (
-    <FeaturedBlockContainer
-      layout={content.layout}
-      image_text_direction={content.image_text_direction}
-    >
+    <FeaturedBlockContainer layout={layout} image_text_direction={content.image_text_direction}>
       {content.image && (
         <ImageContainer>
           <Image
@@ -29,7 +26,7 @@ export function FeatureBlockImageText({ content }) {
           />
         </ImageContainer>
       )}
-      <TextBlock layout={content.layout}>
+      <TextBlock layout={layout}>
         {(content.title || content.subtitle) && (
           <>
             <TitleBlock>
@@ -56,6 +53,7 @@ const FeaturedBlockContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: start;
   @media (min-width: 700px) {
     flex-direction: row;
     ${(props) =>
@@ -120,10 +118,20 @@ const ImageContainer = styled.div`
   padding: var(--n);
   span {
     overflow: visible !important;
+    transition: all 0.25s ease;
+    &:hover {
+      transition: all 0.25s ease;
+      transform: translateY(-4px);
+    }
   }
   img {
     border-radius: var(--m);
     box-shadow: 0 4px var(--n) 0 rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+    &:hover {
+      transition: all 0.25s ease;
+      box-shadow: 0 4px var(--xl) 0 rgba(0, 0, 0, 0.15);
+    }
   }
   @media (min-width: 700px) {
     width: 100%;

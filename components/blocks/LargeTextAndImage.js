@@ -55,6 +55,15 @@ export const FullPageCenteredBlockContainer = styled.div`
   grid-gap: var(--l);
   video {
     width: 100%;
+    border-radius: var(--m);
+    transform: translateY(0px);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px var(--n) 0 rgba(0, 0, 0, 0.15);
+    &:hover {
+      box-shadow: 0 4px var(--xl) 0 rgba(0, 0, 0, 0.15);
+      transform: translateY(-4px);
+      transition: all 0.25s ease;
+    }
   }
 `;
 
