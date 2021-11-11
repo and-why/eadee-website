@@ -27,6 +27,7 @@ export async function getStaticProps() {
   const allPages = await getAllPages();
   const homepages = allPages.filter((page) => page.is_homepage);
   const data = homepages[0];
+  console.log('homepage data', data);
   if (!data) {
     return {
       notFound: true,
