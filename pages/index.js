@@ -1,3 +1,4 @@
+import { getAllPages } from '@/lib/api';
 import Head from 'next/head';
 import Image from 'next/image';
 import Layout from '../components/Layout';
@@ -5,17 +6,16 @@ import { componentSwitch } from '../components/switch';
 import { server } from '../config';
 
 export default function Home({ data }) {
-  const [homepage] = data.filter((page) => page.page_title === 'homepage');
-  console.log('homepage body', homepage);
+  console.log('homepage body', data);
   return (
     <Layout>
-      {homepage.Header &&
-        homepage.Header.map((block) => {
+      {data.Header &&
+        data.Header.map((block) => {
           return componentSwitch(block);
         })}
       <div id='main'>
-        {homepage.Body &&
-          homepage.Body.map((block) => {
+        {data.Body &&
+          data.Body.map((block) => {
             return componentSwitch(block);
           })}
       </div>
@@ -24,20 +24,14 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${server}/pages`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  const data = await res.json();
-
+  const allPages = await getAllPages();
+  const homepages = allPages.filter((page) => page.is_homepage);
+  const data = homepages[0];
   if (!data) {
     return {
       notFound: true,
     };
   }
-  console.log('data', data);
   return {
     props: {
       data,

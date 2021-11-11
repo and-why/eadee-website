@@ -22,20 +22,22 @@ export const FullWidthBlock = ({ content }) => {
             <h2>{content.title}</h2>
             <ReactMarkdown>{content.content}</ReactMarkdown>
           </TextBlock>
-          <ImageBlock>
-            <Image
-              src={`${
-                process.env.NODE_ENV === 'production'
-                  ? content.image.url
-                  : `http://localhost:1337${content.image.url}`
-              }`}
-              alt={content.image.alternativeText}
-              width='1290px'
-              height='800px'
-              objectFit='contain'
-              quality={100}
-            />
-          </ImageBlock>
+          {content.image && (
+            <ImageBlock>
+              <Image
+                src={`${
+                  process.env.NODE_ENV === 'production'
+                    ? content.image.url
+                    : `http://localhost:1337${content.image.url}`
+                }`}
+                alt={content.image.alternativeText}
+                width='1290px'
+                height='800px'
+                objectFit='contain'
+                quality={100}
+              />
+            </ImageBlock>
+          )}
         </FullWidthBlockContainer>
       </Container>
     </Section>
