@@ -12,7 +12,7 @@ export default function Layout({ children, page, title, description }) {
     <>
       <Head>
         <link rel='icon' type='image/png' href='/favicon.ico' />
-        <link rel='icon' type='image/png' href='/Logo.png' />
+        <link rel='icon' type='image/png' href='/images/logo.png' />
         <title>{title || fallbackTitle} | Eadee </title>
         <meta name='description' content={description || fallbackDescription}></meta>
       </Head>

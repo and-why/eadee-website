@@ -1,9 +1,8 @@
 import Layout from '@/components/Layout';
 import { componentSwitch } from '@/components/switch';
-import { getAllPages } from '@/lib/api';
+import { getAllPages, getPageById } from '@/lib/api';
 
 export default function Page({ data }) {
-  console.log('data', data);
   return (
     <Layout>
       {data.Header &&
@@ -20,11 +19,16 @@ export default function Page({ data }) {
   );
 }
 
-export async function getStaticProps({ params, review = null }) {
-  console.log('params', params);
+export async function getStaticProps({ params }) {
   const allPages = await getAllPages();
 
-  const [page] = allPages.filter((page) => page.slug === params.slug);
+  const [page] = allPages?.filter((page) => page.slug === params.slug);
+
+  if (!page) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -35,22 +39,15 @@ export async function getStaticProps({ params, review = null }) {
 
 export async function getStaticPaths() {
   const allPages = await getAllPages();
-
+  console.log('allPages', allPages);
   const paths = allPages?.map((page) => {
-    if (!page.is_homepage) {
-      return {
-        params: {
-          slug: page.slug,
-        },
-      };
-    } else {
-      return {
-        params: {
-          slug: '',
-        },
-      };
-    }
+    return {
+      params: {
+        slug: page.slug,
+      },
+    };
   });
+  console.log('paths', paths);
 
   return {
     paths,
