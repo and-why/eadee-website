@@ -5,27 +5,12 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { Button } from '../styled-components/Button';
 import ReactMarkdown from 'react-markdown';
+import ImageBoxShadow from '../ImageBoxShadow';
 
 export function FeatureBlockImageText({ content, layout }) {
   return (
     <FeaturedBlockContainer layout={layout} image_text_direction={content.image_text_direction}>
-      {content.image && (
-        <ImageContainer>
-          <Image
-            src={`${
-              process.env.NODE_ENV === 'production'
-                ? content.image.url
-                : `http://localhost:1337${content.image.url}`
-            }`}
-            alt={content.image.alternativeText}
-            height='600px'
-            width='900px'
-            objectFit='cover'
-            objectPosition='center'
-            quality={100}
-          />
-        </ImageContainer>
-      )}
+      {content.image && <ImageBoxShadow image={content.image} />}
       <TextBlock layout={layout}>
         {(content.title || content.subtitle) && (
           <>
@@ -111,30 +96,4 @@ const TextBlock = styled.div`
 `;
 const ButtonFooter = styled.div`
   margin-top: var(--m);
-`;
-const ImageContainer = styled.div`
-  display: flex;
-  width: 100%;
-  padding: var(--n);
-  span {
-    overflow: visible !important;
-    transition: all 0.25s ease;
-    &:hover {
-      transition: all 0.25s ease;
-      transform: translateY(-4px);
-    }
-  }
-  img {
-    border-radius: var(--m);
-    box-shadow: 0 4px var(--n) 0 rgba(0, 0, 0, 0.15);
-    transition: all 0.25s ease;
-    &:hover {
-      transition: all 0.25s ease;
-      box-shadow: 0 4px var(--xl) 0 rgba(0, 0, 0, 0.15);
-    }
-  }
-  @media (min-width: 700px) {
-    width: 100%;
-    align-items: center;
-  }
 `;
