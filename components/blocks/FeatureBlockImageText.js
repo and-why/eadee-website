@@ -54,7 +54,7 @@ const FeaturedBlockContainer = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: start;
-  @media (min-width: 700px) {
+  @media (min-width: 800px) {
     flex-direction: row;
     ${(props) =>
       props.layout === 'columns' &&
@@ -75,7 +75,7 @@ const FeaturedBlockContainer = styled.div`
     ${(props) =>
       props.layout === 'rows' &&
       css`
-        max-width: 1000px;
+        max-width: 1080px;
         margin: auto;
       `};
   }
@@ -99,7 +99,7 @@ const TextBlock = styled.div`
   width: 100%;
   /* align-self: center; */
   @media (min-width: 700px) {
-    padding: var(--xl);
+    padding: var(--l) var(--n);
     width: 80%;
     ${(props) =>
       props.layout === 'columns' &&

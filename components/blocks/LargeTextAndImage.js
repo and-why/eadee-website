@@ -14,7 +14,16 @@ export const LargeTextAndImageBlock = ({ content }) => {
           </LargeTextBlock>
           {content.image &&
             (content.image.ext === '.webm' ? (
-              <video autoPlay='true' controls='false' disablePictureInPicture='true' loop='true'>
+              <video
+                aria-label='Video'
+                crossOrigin='anonymous'
+                autoPlay='true'
+                loop
+                playsInLine
+                controlsList='nodownload'
+                defaultplaybackrate='1'
+                preload='auto'
+              >
                 <source
                   type='video/webm'
                   src={`${

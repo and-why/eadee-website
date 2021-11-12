@@ -13,6 +13,7 @@ export default function Navigation({ page, menuToggle, setMenuToggle }) {
   if (isError) {
     return null;
   }
+
   return (
     <NavigationOuterContainer>
       <Container>
