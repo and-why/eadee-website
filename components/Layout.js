@@ -16,9 +16,9 @@ export default function Layout({ children, page, title, description }) {
         <title>{title || fallbackTitle} | Eadee </title>
         <meta name='description' content={description || fallbackDescription}></meta>
       </Head>
-      <Navigation page={page} menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
+      {/* <Navigation page={page} menuToggle={menuToggle} setMenuToggle={setMenuToggle} /> */}
       {!menuToggle && <div>{children}</div>}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
