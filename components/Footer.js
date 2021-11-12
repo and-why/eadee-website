@@ -20,7 +20,7 @@ export default function Footer() {
         <Container>
           <CompanyInfoContainer>
             <LogoContainer>
-              {footer.logo ? (
+              {/* {footer.logo ? (
                 <Image
                   src={`${
                     process.env.NODE_ENV === 'production'
@@ -36,7 +36,7 @@ export default function Footer() {
                 />
               ) : (
                 <Logo />
-              )}
+              )} */}
               <h2>Eadee</h2>
             </LogoContainer>
             <p>Employee Directory, ED, Eadee. Get it?</p>
