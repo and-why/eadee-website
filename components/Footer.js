@@ -8,7 +8,7 @@ import useFooter from './utils/useFooter';
 
 export default function Footer() {
   const { footer, isLoading, isError } = useFooter();
-  // const footer = getFooter();
+
   console.log('footer', footer);
   if (isError) {
     return null;
