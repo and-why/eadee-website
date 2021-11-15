@@ -22,17 +22,21 @@ export default function BannerImageText({ content }) {
           objectFit='cover'
         />
       )}
-      <TextOuterContainer alignText={content.text_placement}>
-        <Container>
-          <TextInnerContainer justifyContent={content.text_placement}>
-            <h1>{content.heading}</h1>
-            <p>{content.subheading}</p>
-            <Link href={content.button_url} passHref>
-              <Button primary>{content.button_text}</Button>
-            </Link>
-          </TextInnerContainer>
-        </Container>
-      </TextOuterContainer>
+      {(content.heading || content.subheading || content.button_url || content.button_text) && (
+        <TextOuterContainer alignText={content.text_placement}>
+          <Container>
+            <TextInnerContainer justifyContent={content.text_placement}>
+              {content.heading && <h1>{content.heading}</h1>}
+              {content.subheading && <p>{content.subheading}</p>}
+              {content.button_url && content.button_text && (
+                <Link href={content.button_url} passHref>
+                  <Button primary>{content.button_text}</Button>
+                </Link>
+              )}
+            </TextInnerContainer>
+          </Container>
+        </TextOuterContainer>
+      )}
     </BannerImageTextOuterContainer>
   );
 }
