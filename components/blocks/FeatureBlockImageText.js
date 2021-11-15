@@ -39,7 +39,7 @@ const FeaturedBlockContainer = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: start;
-  @media (min-width: 800px) {
+  @media (min-width: 850px) {
     flex-direction: row;
     ${(props) =>
       props.layout === 'columns' &&
@@ -73,7 +73,7 @@ export const TitleBlock = styled.div`
   }
   h4 {
     font-family: var(--font-cursive);
-    color: var(--darkgray);
+    color: var(--color-dark-gray);
     margin: 0px;
     font-size: var(--n);
   }
@@ -83,7 +83,7 @@ const TextBlock = styled.div`
   padding: var(--n);
   width: 100%;
   /* align-self: center; */
-  @media (min-width: 700px) {
+  @media (min-width: 850px) {
     padding: var(--l) var(--n);
     width: 80%;
     ${(props) =>

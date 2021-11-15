@@ -19,7 +19,9 @@ export const ColouredBlock = ({ content }) => {
           {content.title && <h2 className='title'>{content.title}</h2>}
           <FeaturedBlocksContainer layout={content.layout}>
             {content.feature_block_image_text.map((block) => {
-              return <FeatureBlockImageText content={block} layout={content.layout} />;
+              return (
+                <FeatureBlockImageText key={block.id} content={block} layout={content.layout} />
+              );
             })}
           </FeaturedBlocksContainer>
         </Container>
@@ -31,7 +33,7 @@ export const ColouredBlock = ({ content }) => {
 export const ColouredBlockOuterContainer = styled.div`
   width: 100%;
   padding: var(--xxl) 0;
-  background: var(--primary);
+  background: var(--color-gray-light);
   display: flex;
   position: relative;
 
@@ -52,7 +54,7 @@ export const ColouredBlockOuterContainer = styled.div`
         ${(props) =>
           props.bgColor &&
           css`
-            background-color: var(--${props.bgColor});
+            background-color: var(--color-${props.bgColor});
           `};
       }
     `};
@@ -73,7 +75,7 @@ export const ColouredBlockOuterContainer = styled.div`
         ${(props) =>
           props.bgColor &&
           css`
-            background-color: var(--${props.bgColor});
+            background-color: var(--color-${props.bgColor});
           `};
       }
     `};
@@ -94,7 +96,7 @@ export const ColouredBlockOuterContainer = styled.div`
         ${(props) =>
           props.bgColor &&
           css`
-            background-color: var(--${props.bgColor});
+            background-color: var(--color-${props.bgColor});
           `};
       }
       &:after {
@@ -111,7 +113,7 @@ export const ColouredBlockOuterContainer = styled.div`
         ${(props) =>
           props.bgColor &&
           css`
-            background-color: var(--${props.bgColor});
+            background-color: var(--color-${props.bgColor});
           `};
       }
     `};
@@ -124,12 +126,12 @@ export const ColouredBlockOuterContainer = styled.div`
   ${(props) =>
     props.bgColor &&
     css`
-      background: var(--${props.bgColor});
+      background: var(--color-${props.bgColor});
     `};
   ${(props) =>
     props.textColor &&
     css`
-      color: var(--${props.textColor});
+      color: var(--color-${props.textColor});
     `};
 `;
 
@@ -140,7 +142,7 @@ const FeaturedBlocksContainer = styled.div`
   row-gap: var(--n);
   justify-content: start;
 
-  @media (min-width: 700px) {
+  @media (min-width: 850px) {
     ${(props) =>
       props.layout == 'columns' &&
       css`

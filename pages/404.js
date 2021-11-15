@@ -8,7 +8,7 @@ export default function Custom404() {
       <Section>
         <Container>
           <h2>Whoopsie</h2>
-          <p>This page doesn't exist. </p>
+          <p>This page doesn&apos;t exist. </p>
         </Container>
       </Section>
     </Layout>

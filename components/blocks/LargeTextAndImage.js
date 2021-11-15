@@ -67,9 +67,9 @@ export const FullPageCenteredBlockContainer = styled.div`
     border-radius: var(--m);
     transform: translateY(0px);
     transition: all 0.25s ease;
-    box-shadow: 0 4px var(--n) 0 rgba(0, 0, 0, 0.15);
+    box-shadow: var(--box-shadow);
     &:hover {
-      box-shadow: 0 4px var(--xl) 0 rgba(0, 0, 0, 0.15);
+      box-shadow: var(--box-shadow-hover);
       transform: translateY(-4px);
       transition: all 0.25s ease;
     }

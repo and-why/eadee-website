@@ -1,7 +1,7 @@
 // {
 //   "__component": "blocks.feature-block-title-and-text",
 //   "id": 1,
-//   "background_colour": "lightgray",
+//   "background_colour": "color-gray-light",
 //   "feature_block_title_text": [
 //       {
 //           "id": 1,

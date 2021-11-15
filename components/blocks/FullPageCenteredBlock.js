@@ -31,7 +31,7 @@ export const FullPageCenteredBlock = ({ content }) => {
               >
                 <path
                   d='M2 2L19.5 14L37 2'
-                  stroke='var(--mediumgray)'
+                  stroke='var(--color-gray_medium)'
                   strokeWidth='3'
                   strokeLinecap='round'
                   strokeLinejoin='round'
@@ -90,7 +90,7 @@ const FullPageCenteredContainer = styled.div`
           position: absolute;
           bottom: 24px;
           font-family: var(--font-cursive);
-          color: var(--primary);
+          color: var(--color-primary);
           font-size: 16px;
           transform: rotate(-5deg) translateX(-50%);
           &:after {
@@ -112,7 +112,7 @@ const FullPageCenteredContainer = styled.div`
       font-weight: 300;
       font-size: var(--s);
       margin-left: var(--s);
-      color: var(--mediumgray);
+      color: var(--color-gray_medium);
     }
   }
   em {
@@ -124,7 +124,7 @@ const FullPageCenteredContainer = styled.div`
   }
   a.scroll {
     font-size: var(--s);
-    color: var(--mediumgray);
+    color: var(--color-gray_medium);
     margin-top: var(--s-vmin);
     border-bottom: none;
     position: absolute;

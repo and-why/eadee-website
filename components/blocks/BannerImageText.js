@@ -1,0 +1,115 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import styled, { css } from 'styled-components';
+import { Button } from '../styled-components/Button';
+import { Container } from '../styled-components/Container';
+
+export default function BannerImageText({ content }) {
+  return (
+    <BannerImageTextOuterContainer
+      textPosition={content.text_placement}
+      bgColor={content.background_colour}
+    >
+      {content.media && (
+        <Image
+          src={`${
+            process.env.NODE_ENV === 'production'
+              ? content.media.url
+              : `http://localhost:1337${content.media.url}`
+          }`}
+          alt={content.media.alternativeText}
+          layout='fill'
+          objectFit='cover'
+        />
+      )}
+      <TextOuterContainer alignText={content.text_placement}>
+        <Container>
+          <TextInnerContainer justifyContent={content.text_placement}>
+            <h1>{content.heading}</h1>
+            <p>{content.subheading}</p>
+            <Link href={content.button_url} passHref>
+              <Button primary>{content.button_text}</Button>
+            </Link>
+          </TextInnerContainer>
+        </Container>
+      </TextOuterContainer>
+    </BannerImageTextOuterContainer>
+  );
+}
+
+const BannerImageTextOuterContainer = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  img {
+    width: 100%;
+    min-height: 500px;
+  }
+  ${(props) =>
+    props.bgColor &&
+    css`
+      background-color: var(--color-${props.bgColor});
+    `}
+  ${(props) =>
+    props.textPosition &&
+    css`
+      justify-content: ${props.textPosition};
+    `}
+`;
+const TextOuterContainer = styled.div`
+  line-height: 1.5;
+  font-size: var(--m);
+  margin: var(--l) 0;
+  z-index: 2;
+  h1 {
+    margin: 0 0 8px;
+  }
+  ${(props) =>
+    props.alignText === 'start' &&
+    css`
+      text-align: left;
+    `}
+  ${(props) =>
+    props.alignText === 'center' &&
+    css`
+      text-align: center;
+    `}
+      ${(props) =>
+    props.alignText === 'end' &&
+    css`
+      text-align: right;
+    `}
+    @media(min-width: 850px) {
+    margin: var(--xxl);
+  }
+`;
+
+const TextInnerContainer = styled.div`
+  padding: var(--m);
+  border-radius: var(--border-radius-large);
+  background: var(--color-white);
+  box-shadow: var(--box-shadow);
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    margin-bottom: var(--l);
+  }
+  ${(props) =>
+    props.justifyContent === 'start' &&
+    css`
+      justify-content: left;
+    `}
+  ${(props) =>
+    props.justifyContent === 'center' &&
+    css`
+      justify-content: center;
+    `}
+      ${(props) =>
+    props.justifyContent === 'end' &&
+    css`
+      justify-content: right;
+    `}
+`;

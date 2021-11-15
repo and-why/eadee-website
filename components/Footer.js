@@ -60,7 +60,11 @@ export default function Footer() {
               <FooterBottomLevel>
                 © {new Date().getFullYear()} Eadee.
                 {footer.legal_menu.map((item) => {
-                  return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
+                  return (
+                    <Link key={item.id} href={item.page ? item.page.slug : item.url}>
+                      {item.label}
+                    </Link>
+                  );
                 })}
               </FooterBottomLevel>
             )}
@@ -88,14 +92,14 @@ const NavMenu = ({ menu }) => {
 };
 
 const FooterOuterContainer = styled.div`
-  background-color: var(--dark);
+  background-color: var(--color-dark);
   width: 100%;
   padding: var(--xl) 0;
 `;
 
 const FooterInnerContainer = styled.div`
   width: 100%;
-  color: white;
+  color: var(--color-white);
   font-size: var(--n);
   h4 {
     margin-top: 0;
@@ -103,7 +107,7 @@ const FooterInnerContainer = styled.div`
 `;
 const CompanyInfoContainer = styled.div`
   p {
-    color: var(--darkgray);
+    color: var(--color-gray_dark);
     margin: var(--s) 0;
     font-size: var(--n);
   }
@@ -112,7 +116,7 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   h2 {
-    color: white;
+    color: var(--color-white);
     margin: 0;
     font-size: var(--l);
     font-weight: 900;
@@ -130,9 +134,9 @@ const FooterTopLevel = styled.div`
   align-items: start;
   justify-items: start;
   a {
-    color: white;
+    color: var(--color-white);
     &:hover {
-      border-color: white;
+      border-color: var(--color-white);
     }
   }
   img,
@@ -141,8 +145,8 @@ const FooterTopLevel = styled.div`
     height: 50px;
   }
   @media (min-width: 500px) {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   }
 `;
 const FooterNavMenu = styled.div`
@@ -162,6 +166,6 @@ const FooterBottomLevel = styled.div`
   grid-gap: var(--s);
   font-size: var(--s);
   a {
-    color: white;
+    color: var(--color-white);
   }
 `;

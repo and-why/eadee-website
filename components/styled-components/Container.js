@@ -6,9 +6,9 @@ export const Container = styled.div`
   max-width: 1440px;
   padding: 0 var(--n);
   @media (min-width: 500px) {
-    padding: 0 var(--xl);
+    padding: 0 var(--m);
   }
   @media (min-width: 1000px) {
-    padding: 0 var(--xxxl);
+    padding: 0 var(--xl);
   }
 `;

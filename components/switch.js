@@ -1,3 +1,4 @@
+import BannerImageText from './blocks/BannerImageText';
 import { ColouredBlock } from './blocks/ColouredBlock';
 import { FeatureBlockTitleAndText } from './blocks/FeatureBlockTitleAndText';
 import { FullPageCenteredBlock } from './blocks/FullPageCenteredBlock';
@@ -10,6 +11,8 @@ export function componentSwitch(block) {
   switch (block.__component) {
     case 'blocks.full-page-block':
       return <FullPageCenteredBlock content={block} />;
+    case 'blocks.banner-image-and-text':
+      return <BannerImageText content={block} />;
     case 'blocks.large-text-and-image':
       return <LargeTextAndImageBlock content={block} />;
     case 'blocks.coloured-block':

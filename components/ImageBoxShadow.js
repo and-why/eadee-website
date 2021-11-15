@@ -33,15 +33,15 @@ const ImageContainer = styled.div`
   }
   img {
     border-radius: var(--m);
-    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--box-shadow);
     transition: all 0.25s ease;
     overflow: hidden;
     &:hover {
       transition: all 0.25s ease;
-      box-shadow: 0 10px 80px -10px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--box-shadow-hover);
     }
   }
-  @media (min-width: 700px) {
+  @media (min-width: 850px) {
     width: 100%;
     align-items: center;
   }

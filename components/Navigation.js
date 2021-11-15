@@ -77,15 +77,15 @@ export const MenuItems = ({ nav }) => {
 
 const DesktopMenu = styled.div`
   display: none;
-  @media (min-width: 800px) {
+  @media (min-width: 850px) {
     display: flex;
     align-items: center;
     font-size: var(--n);
     a {
       margin-right: var(--n);
-      color: var(--dark);
+      color: var(--color-dark);
       &:hover {
-        color: var(--primary);
+        color: var(--color-primary);
       }
     }
   }
@@ -93,13 +93,13 @@ const DesktopMenu = styled.div`
 
 const MobileMenu = styled.div`
   display: block;
-  @media (min-width: 800px) {
+  @media (min-width: 850px) {
     display: none;
   }
 `;
 const MobileMenuContainer = styled.div`
   position: fixed;
-  background: var(--white);
+  background: var(--color-white);
   overflow: hidden;
   max-height: 0px;
   width: 100%;
@@ -117,13 +117,13 @@ const MobileMenuContainer = styled.div`
       top: 83px;
       right: 0;
       a {
-        color: var(--dark);
+        color: var(--color-dark);
         padding: var(--m) 0;
         font-size: var(--l);
-        border-bottom: 2px solid var(--dark);
+        border-bottom: 2px solid var(--color-dark);
         &:hover {
-          color: var(--dark);
-          border-bottom: 2px solid var(--dark);å
+          color: var(--color-dark);
+          border-bottom: 2px solid var(--color-dark);å
         }
       }
     `}
@@ -158,9 +158,9 @@ export const LogoStyles = styled.div`
     font-weight: 900;
     margin: 0;
     margin-left: 10px;
-    color: var(--dark);
+    color: var(--color-dark);
     &:hover {
-      color: var(--dark);
+      color: var(--color-dark);
     }
   }
 `;
