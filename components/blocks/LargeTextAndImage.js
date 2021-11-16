@@ -13,29 +13,11 @@ export const LargeTextAndImageBlock = ({ content }) => {
             <ReactMarkdown>{content.text}</ReactMarkdown>
           </LargeTextBlock>
           {content.image &&
-            (content.image.ext === '.webm' ? (
-              <video
-                aria-label='Video'
-                crossOrigin='anonymous'
-                autoPlay='true'
-                loop
-                playsInLine
-                controlsList='nodownload'
-                defaultplaybackrate='1'
-                preload='auto'
-              >
-                <source
-                  type='video/webm'
-                  src={`${
-                    process.env.NODE_ENV === 'production'
-                      ? content.image.url
-                      : `http://localhost:1337${content.image.url}`
-                  }`}
-                />
-                <p>
-                  Your browser cannot play this video. Upgrade to the latest Chrome, or Firefox.
-                </p>
-              </video>
+            (content.wistia_video_script ? (
+              <div
+                className='video'
+                dangerouslySetInnerHTML={{ __html: content.wistia_video_script }}
+              />
             ) : (
               <Image
                 src={`${
@@ -62,15 +44,13 @@ export const FullPageCenteredBlockContainer = styled.div`
   margin: auto;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: var(--l);
-  video {
+  .video {
     width: 100%;
     border-radius: var(--m);
-    transform: translateY(0px);
     transition: all 0.25s ease;
     box-shadow: var(--box-shadow);
     &:hover {
       box-shadow: var(--box-shadow-hover);
-      transform: translateY(-4px);
       transition: all 0.25s ease;
     }
   }
