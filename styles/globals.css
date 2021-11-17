@@ -36,7 +36,7 @@ html {
   --color-gray_dark: #777;
   --color-gray: #e9e9e9;
   --color-grey: var(--color-gray);
-  --color-dark: #333;
+  --color-dark: #222;
   --color-black: #141414;
   --color-white: #fff;
   --color-primary: #f4a261;
@@ -58,6 +58,7 @@ html {
   --xxxl: 96px;
   --xxl: 64px;
   --xl: 48px;
+  --ml: 40px;
   --l: 32px;
   --m: 24px;
   --nf: 18px;
@@ -124,7 +125,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0.75em;
+  color: var(--black);
+  margin: 0 0 var(--m);
   padding: 0;
 }
 h1 {
@@ -134,11 +136,11 @@ h1 {
 }
 h2 {
   font-size: var(--l);
-  font-weight: 900;
+  font-weight: 700;
 }
 h3 {
   font-size: var(--m);
-  font-weight: 900;
+  font-weight: 700;
 }
 h6 {
   font-weight: 400;

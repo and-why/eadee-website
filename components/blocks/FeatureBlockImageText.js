@@ -19,8 +19,8 @@ export function FeatureBlockImageText({ content, layout }) {
         {(content.title || content.subtitle) && (
           <>
             <TitleBlock>
-              <h3>{content.title}</h3>
               {content.subtitle && <h4>{content.subtitle}</h4>}
+              <h3>{content.title}</h3>
             </TitleBlock>
             <ReactMarkdown>{content.content}</ReactMarkdown>
           </>
@@ -72,8 +72,8 @@ const FeaturedBlockContainer = styled.div`
 export const TitleBlock = styled.div`
   margin-bottom: var(--s);
   h3 {
-    font-weight: 900;
-    margin: 0px;
+    margin-bottom: var(--m);
+    font-size: var(--ml);
   }
   h4 {
     font-family: var(--font-cursive);
