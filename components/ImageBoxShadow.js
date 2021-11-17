@@ -9,8 +9,8 @@ export default function ImageBoxShadow({ image }) {
           process.env.NODE_ENV === 'production' ? image.url : `http://localhost:1337${image.url}`
         }`}
         alt={image.alternativeText}
-        height='600px'
-        width='900px'
+        height={image.height}
+        width={image.width}
         objectFit='cover'
         objectPosition='center'
         quality={100}
@@ -28,7 +28,6 @@ const ImageContainer = styled.div`
     transition: all 0.25s ease;
     &:hover {
       transition: all 0.25s ease;
-      transform: translateY(-4px);
     }
   }
   img {

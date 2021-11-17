@@ -9,7 +9,11 @@ import ImageBoxShadow from '../ImageBoxShadow';
 
 export function FeatureBlockImageText({ content, layout }) {
   return (
-    <FeaturedBlockContainer layout={layout} image_text_direction={content.image_text_direction}>
+    <FeaturedBlockContainer
+      id={content.anchor_id ? content.anchor_id : undefined}
+      layout={layout}
+      image_text_direction={content.image_text_direction}
+    >
       {content.image && <ImageBoxShadow image={content.image} />}
       <TextBlock layout={layout}>
         {(content.title || content.subtitle) && (
@@ -38,7 +42,7 @@ const FeaturedBlockContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-items: start;
+  align-items: center;
   @media (min-width: 850px) {
     flex-direction: row;
     ${(props) =>
@@ -85,7 +89,7 @@ const TextBlock = styled.div`
   /* align-self: center; */
   @media (min-width: 850px) {
     padding: var(--l) var(--n);
-    width: 80%;
+    width: 90%;
     ${(props) =>
       props.layout === 'columns' &&
       css`
