@@ -32,11 +32,15 @@ export const ColouredBlock = ({ content }) => {
 
 export const ColouredBlockOuterContainer = styled.div`
   width: 100%;
-  padding: var(--xxl) 0;
+  padding: var(--xl) 0;
   background: var(--color-gray-light);
   display: flex;
   position: relative;
-
+  ${(props) =>
+    props.bgColor === 'white' &&
+    css`
+      padding: 0px;
+    `}
   ${(props) =>
     props.roughEdge === 'bottom' &&
     css`
