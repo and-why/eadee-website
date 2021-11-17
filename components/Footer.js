@@ -73,7 +73,7 @@ export default function Footer() {
       </FooterOuterContainer>
     );
   }
-  return <p>Create a footer</p>;
+  return null;
 }
 
 const NavMenu = ({ menu }) => {

@@ -9,7 +9,7 @@ import { FeatureBlockImageText } from './FeatureBlockImageText';
 
 export const ColouredBlock = ({ content }) => {
   return (
-    <Section>
+    <Section bgColor={content.background_colour}>
       <ColouredBlockOuterContainer
         textColor={content.text_color}
         bgColor={content.background_colour}

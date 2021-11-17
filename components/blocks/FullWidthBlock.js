@@ -45,7 +45,7 @@ export const FullWidthBlock = ({ content }) => {
 };
 
 const FullWidthBlockContainer = styled.div`
-  max-width: 900px;
+  max-width: 1080px;
   margin: auto;
   img {
     width: 100%;
@@ -56,7 +56,7 @@ const FullWidthBlockContainer = styled.div`
 `;
 
 const TextBlock = styled.div`
-  padding: var(--l) 0;
+  padding: var(--xl) 0;
 `;
 const ImageBlock = styled.div`
   padding: var(--l) 0;
