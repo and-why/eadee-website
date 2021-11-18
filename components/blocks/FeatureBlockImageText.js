@@ -14,7 +14,15 @@ export function FeatureBlockImageText({ content, layout }) {
       layout={layout}
       image_text_direction={content.image_text_direction}
     >
-      {content.image && <ImageBoxShadow image={content.image} />}
+      {content.image &&
+        (content.wistia_video_script ? (
+          <div
+            className='video'
+            dangerouslySetInnerHTML={{ __html: content.wistia_video_script }}
+          />
+        ) : (
+          <ImageBoxShadow image={content.image} />
+        ))}
       <TextBlock layout={layout}>
         {(content.title || content.subtitle) && (
           <>
@@ -29,7 +37,7 @@ export function FeatureBlockImageText({ content, layout }) {
         {content.button_text && content.button_url && (
           <ButtonFooter>
             <Link href={content.button_url} passHref>
-              <Button>{content.button_text}</Button>
+              <Button primary>{content.button_text}</Button>
             </Link>
           </ButtonFooter>
         )}
@@ -43,6 +51,16 @@ const FeaturedBlockContainer = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  .video {
+    width: 100%;
+    border-radius: var(--m);
+    transition: all 0.25s ease;
+    box-shadow: var(--box-shadow);
+    &:hover {
+      box-shadow: var(--box-shadow-hover);
+      transition: all 0.25s ease;
+    }
+  }
   @media (min-width: 850px) {
     flex-direction: row;
     ${(props) =>
@@ -73,7 +91,6 @@ export const TitleBlock = styled.div`
   margin-bottom: var(--s);
   h3 {
     margin-bottom: var(--m);
-    font-size: var(--ml);
   }
   h4 {
     font-family: var(--font-cursive);

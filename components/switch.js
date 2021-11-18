@@ -1,4 +1,5 @@
 import BannerImageText from './blocks/BannerImageText';
+import { CallToActionBlock } from './blocks/CallToActionBlock';
 import { ColouredBlock } from './blocks/ColouredBlock';
 import { FeatureBlockTitleAndText } from './blocks/FeatureBlockTitleAndText';
 import { FullPageCenteredBlock } from './blocks/FullPageCenteredBlock';
@@ -23,6 +24,8 @@ export function componentSwitch(block) {
       return <FeatureBlockTitleAndText content={block} />;
     case 'blocks.feature-block-image-text':
       return <FeatureBlockImageTextOnly content={block} />;
+    case 'blocks.call-to-action-block':
+      return <CallToActionBlock content={block} />;
     default:
       return <p>No block Found</p>;
   }

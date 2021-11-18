@@ -27,11 +27,7 @@ export const FullWidthBlock = ({ content }) => {
       {content.image && (
         <ImageBlock>
           <Image
-            src={`${
-              process.env.NODE_ENV === 'production'
-                ? content.image.url
-                : `http://localhost:1337${content.image.url}`
-            }`}
+            src={content.image.url}
             alt={content.image.alternativeText}
             width='1290px'
             height='800px'
@@ -51,7 +47,7 @@ const FullWidthBlockContainer = styled.div`
     width: 100%;
   }
   h2 {
-    margin: 0 0 1em 0;
+    margin: 0 0 var(--l) 0;
   }
 `;
 

@@ -9,7 +9,11 @@ import { FeatureBlockImageText } from './FeatureBlockImageText';
 
 export const ColouredBlock = ({ content }) => {
   return (
-    <Section bgColor={content.background_colour}>
+    <Section
+      bgColor={content.background_colour}
+      id={content.anchor_id ? content.anchor_id : undefined}
+      roughEdge={content.rough_edge}
+    >
       <ColouredBlockOuterContainer
         textColor={content.text_color}
         bgColor={content.background_colour}
@@ -32,15 +36,10 @@ export const ColouredBlock = ({ content }) => {
 
 export const ColouredBlockOuterContainer = styled.div`
   width: 100%;
-  padding: var(--xl) 0;
+  padding: var(--xs-vmin) 0;
   background: var(--color-gray-light);
   display: flex;
   position: relative;
-  ${(props) =>
-    props.bgColor === 'white' &&
-    css`
-      padding: 0px;
-    `}
   ${(props) =>
     props.roughEdge === 'bottom' &&
     css`
@@ -68,7 +67,7 @@ export const ColouredBlockOuterContainer = styled.div`
       &:before {
         content: '';
         position: absolute;
-        z-index: -1;
+        z-index: 2;
         left: 0;
         top: 0;
         right: 0;
@@ -89,7 +88,7 @@ export const ColouredBlockOuterContainer = styled.div`
       &:before {
         content: '';
         position: absolute;
-        z-index: -1;
+        z-index: 2;
         left: 0;
         top: 0;
         right: 0;
@@ -125,7 +124,7 @@ export const ColouredBlockOuterContainer = styled.div`
     width: 100%;
     text-align: center;
     max-width: 600px;
-    margin: 0 auto var(--xl);
+    margin: 0 auto var(--l);
   }
   ${(props) =>
     props.bgColor &&

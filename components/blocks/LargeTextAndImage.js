@@ -20,11 +20,7 @@ export const LargeTextAndImageBlock = ({ content }) => {
               />
             ) : (
               <Image
-                src={`${
-                  process.env.NODE_ENV === 'production'
-                    ? content.image.url
-                    : `http://localhost:1337${content.image.url}`
-                }`}
+                src={content.image.url}
                 alt={content.image.alternativeText}
                 height={content.image.height}
                 width={content.image.width}
@@ -39,20 +35,17 @@ export const LargeTextAndImageBlock = ({ content }) => {
 };
 
 export const FullPageCenteredBlockContainer = styled.div`
-  padding-top: 83px;
   display: grid;
   margin: auto;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: var(--l);
+  padding: var(--xs-vmin) 0;
+  padding-top: 83px;
   .video {
-    width: 100%;
+    /* width: 100%; */
     border-radius: var(--m);
-    transition: all 0.25s ease;
-    box-shadow: var(--box-shadow);
-    &:hover {
-      box-shadow: var(--box-shadow-hover);
-      transition: all 0.25s ease;
-    }
   }
 `;
 

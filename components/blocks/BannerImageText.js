@@ -12,11 +12,7 @@ export default function BannerImageText({ content }) {
     >
       {content.media && (
         <Image
-          src={`${
-            process.env.NODE_ENV === 'production'
-              ? content.media.url
-              : `http://localhost:1337${content.media.url}`
-          }`}
+          src={content.media.url}
           alt={content.media.alternativeText}
           layout='fill'
           objectFit='cover'

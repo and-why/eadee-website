@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Logo from './Logo';
 import { Button } from './styled-components/Button';
 import { useState } from 'react';
+import server from 'config/server';
 
 export default function Navigation({ page, menuToggle, setMenuToggle }) {
   const { nav, isLoading, isError } = useNav();
@@ -22,11 +23,7 @@ export default function Navigation({ page, menuToggle, setMenuToggle }) {
             <LogoStyles>
               {nav?.logo ? (
                 <Image
-                  src={`${
-                    process.env.NODE_ENV === 'production'
-                      ? nav.logo.url
-                      : `http://localhost:1337${nav.logo.url}`
-                  }`}
+                  src={nav.logo.url}
                   alt={nav.logo.alternativeText}
                   height='51px'
                   width='51px'

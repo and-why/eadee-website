@@ -1,4 +1,5 @@
 import { getFooter } from '@/lib/api';
+import { serverURL } from '../config';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -22,11 +23,7 @@ export default function Footer() {
             <LogoContainer>
               {footer.logo ? (
                 <Image
-                  src={`${
-                    process.env.NODE_ENV === 'production'
-                      ? footer.logo.url
-                      : `http://localhost:1337${footer.logo.url}`
-                  }`}
+                  src={`${serverURL}/footer.logo.url`}
                   alt={footer.logo.alternativeText}
                   height='51px'
                   width='51px'

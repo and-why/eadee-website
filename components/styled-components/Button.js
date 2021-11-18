@@ -6,8 +6,9 @@ export const Button = styled.button`
   border: 1px solid var(--color-gray);
   background-color: var(--color-white);
   cursor: pointer;
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-medium);
   font-size: 14px;
+  font-weight: 500;
   line-height: 1.3;
   font-family: 'Inter', sans-serif;
   display: flex;
@@ -43,7 +44,7 @@ export const Button = styled.button`
     css`
       background-color: var(--color-primary);
       border: 1px solid var(--color-primary);
-      color: var(--color-white);
+      color: var(--color-dark);
       &:hover,
       &:active,
       &:focus {

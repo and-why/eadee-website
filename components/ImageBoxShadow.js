@@ -5,9 +5,7 @@ export default function ImageBoxShadow({ image }) {
   return (
     <ImageContainer>
       <Image
-        src={`${
-          process.env.NODE_ENV === 'production' ? image.url : `http://localhost:1337${image.url}`
-        }`}
+        src={image.url}
         alt={image.alternativeText}
         height={image.height}
         width={image.width}
