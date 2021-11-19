@@ -5,12 +5,10 @@ import useNav from './utils/useNav';
 import Link from 'next/link';
 import Logo from './Logo';
 import { Button } from './styled-components/Button';
-import { useState } from 'react';
-import server from 'config/server';
 
 export default function Navigation({ page, menuToggle, setMenuToggle }) {
   const { nav, isLoading, isError } = useNav();
-
+  console.log('nav', nav);
   if (isError) {
     return null;
   }
@@ -65,7 +63,19 @@ export const MenuItems = ({ nav }) => {
       {nav &&
         nav.body.map((item) => {
           if (item.url || item.page) {
-            return <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>;
+            return (
+              <>
+                {item.style == 'none' ? (
+                  <Link key={item.id} href={item.page ? item.page.slug : item.url}>
+                    {item.label}
+                  </Link>
+                ) : (
+                  <Link key={item.id} href={item.page ? item.page.slug : item.url}>
+                    <Button buttonStyle={item.style}>{item.label}</Button>
+                  </Link>
+                )}
+              </>
+            );
           }
         })}
     </>
@@ -74,12 +84,15 @@ export const MenuItems = ({ nav }) => {
 
 const DesktopMenu = styled.div`
   display: none;
+  button {
+    margin-left: var(--s);
+  }
   @media (min-width: 850px) {
     display: flex;
     align-items: center;
     font-size: var(--n);
     a {
-      margin-right: var(--n);
+      margin-left: var(--n);
       color: var(--color-dark);
       &:hover {
         color: var(--color-primary);
@@ -105,6 +118,10 @@ const MobileMenuContainer = styled.div`
   z-index: 101;
   display: flex;
   flex-direction: column;
+  button {
+    margin-top: var(--m);
+    font-size: var(--l);
+  }
   ${(props) =>
     props.menuToggle &&
     css`
@@ -119,7 +136,8 @@ const MobileMenuContainer = styled.div`
         font-size: var(--l);
         border-bottom: 2px solid var(--color-dark);
         &:hover {
-          color: var(--color-dark);
+          text-decoration: none;
+          color: var(--color-gray_dark);
           border-bottom: 2px solid var(--color-dark);å
         }
       }

@@ -18,7 +18,7 @@ export default function Layout({ children, page, title, description }) {
       </Head>
       <Navigation page={page} menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
       {!menuToggle && <div>{children}</div>}
-      <Footer />
+      {!menuToggle && <Footer />}
     </>
   );
 }

@@ -40,7 +40,7 @@ export const Button = styled.button`
     }
   }
   ${(props) =>
-    props.primary &&
+    (props.primary || props.buttonStyle === 'primary') &&
     css`
       background-color: var(--color-primary);
       border: 1px solid var(--color-primary);
@@ -54,7 +54,7 @@ export const Button = styled.button`
       }
     `};
   ${(props) =>
-    props.secondary &&
+    (props.secondary || props.buttonStyle === 'secondary') &&
     css`
       background-color: rgba(255, 255, 255, 0);
       border: 1px solid rgba(255, 255, 255, 0);
@@ -68,7 +68,7 @@ export const Button = styled.button`
       }
     `};
   ${(props) =>
-    props.light &&
+    (props.light || props.buttonStyle === 'light') &&
     css`
       background-color: var(--white, #fff);
       border: 1px solid var(--white, #fff);
@@ -82,7 +82,7 @@ export const Button = styled.button`
       }
     `};
   ${(props) =>
-    props.dark &&
+    (props.dark || props.buttonStyle === 'dark') &&
     css`
       background-color: var(--color-dark);
       border: 1px solid var(--color-dark);
@@ -96,7 +96,7 @@ export const Button = styled.button`
       }
     `};
   ${(props) =>
-    props.warning &&
+    (props.warning || props.buttonStyle === 'warning') &&
     css`
       background-color: var(--color-red);
       border: 1px solid var(--color-red);

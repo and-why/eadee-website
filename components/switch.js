@@ -1,10 +1,10 @@
 import BannerImageText from './blocks/BannerImageText';
-import { CallToActionBlock } from './blocks/CallToActionBlock';
 import { ColouredBlock } from './blocks/ColouredBlock';
 import { FeatureBlockTitleAndText } from './blocks/FeatureBlockTitleAndText';
 import { FullPageCenteredBlock } from './blocks/FullPageCenteredBlock';
 import { FullWidthBlock } from './blocks/FullWidthBlock';
 import { LargeTextAndImageBlock } from './blocks/LargeTextAndImage';
+import { CallToActionBlock } from './blocks/CallToActionBlock';
 import FeatureBlockImageTextOnly from './FeatureBlockImageTextOnly';
 
 export function componentSwitch(block) {
@@ -20,12 +20,12 @@ export function componentSwitch(block) {
       return <ColouredBlock content={block} />;
     case 'blocks.full-width':
       return <FullWidthBlock content={block} />;
+    case 'blocks.call-to-action-block':
+      return <CallToActionBlock content={block} />;
     case 'blocks.feature-block-title-and-text':
       return <FeatureBlockTitleAndText content={block} />;
     case 'blocks.feature-block-image-text':
       return <FeatureBlockImageTextOnly content={block} />;
-    case 'blocks.call-to-action-block':
-      return <CallToActionBlock content={block} />;
     default:
       return <p>No block Found</p>;
   }

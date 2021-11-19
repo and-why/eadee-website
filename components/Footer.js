@@ -92,6 +92,7 @@ const FooterOuterContainer = styled.div`
   background-color: var(--color-dark);
   width: 100%;
   padding: var(--xl) 0;
+  z-index: 1;
 `;
 
 const FooterInnerContainer = styled.div`

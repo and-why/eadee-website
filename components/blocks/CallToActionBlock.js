@@ -1,27 +1,61 @@
+import Link from 'next/link';
 import { Button } from '../styled-components/Button';
+import styled, { css } from 'styled-components';
+import { Container } from '../styled-components/Container';
 
 export const CallToActionBlock = ({ content }) => {
   return (
-    <CallToActionOuterContainer bgColor={content.background_colour}>
-      <CallToActionInnerContainer>
-        <h2>{content.heading}</h2>
-        <ButtonContainer>
-          <Button buttonColor={content.button_colour} buttonTextColour={content.button_text_colour}>
-            {content.button_text}
-          </Button>
-          <p>{content.button_aside}</p>
-        </ButtonContainer>
-      </CallToActionInnerContainer>
-    </CallToActionOuterContainer>
+    <Container>
+      <CallToActionOuterContainer bgColor={content.background_colour}>
+        <CallToActionInnerContainer>
+          <h2>{content.heading}</h2>
+          {content.button_text && content.button_url && (
+            <ButtonContainer>
+              <Link href={content.button_url}>
+                <Button
+                  buttonColor={content.button_colour}
+                  buttonTextColour={content.button_text_colour}
+                >
+                  {content.button_text}
+                </Button>
+              </Link>
+              <p>{content.button_aside}</p>
+            </ButtonContainer>
+          )}
+        </CallToActionInnerContainer>
+      </CallToActionOuterContainer>
+    </Container>
   );
 };
 
-CallToActionOuterContainer = styled.div`
+const CallToActionOuterContainer = styled.div`
   display: flex;
+  justify-content: center;
+  max-width: 800px;
+  margin: var(--s-vmin) auto;
+  border-radius: var(--border-radius-large);
+  background-color: var(--primary);
+  ${(props) =>
+    props.bgColor &&
+    css`
+      background-color: var(--color-${props.bgColor});
+    `}
 `;
-CallToActionInnerContainer = styled.div`
+const CallToActionInnerContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--xl);
+  text-align: center;
 `;
-ButtonContainer = styled.div`
+const ButtonContainer = styled.div`
   display: flex;
+  align-items: center;
+  p {
+    margin: 0;
+    margin-left: var(--s);
+    font-size: var(--n);
+    color: var(--color-gray);
+    opacity: 0.7;
+  }
 `;
