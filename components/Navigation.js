@@ -1,17 +1,13 @@
 import Image from 'next/image';
 import styled, { css } from 'styled-components';
 import { Container } from './styled-components/Container';
-import useNav from './utils/useNav';
 import Link from 'next/link';
 import Logo from './Logo';
 import { Button } from './styled-components/Button';
 
-export default function Navigation({ page, menuToggle, setMenuToggle }) {
-  const { nav, isLoading, isError } = useNav();
-  console.log('nav', nav);
-  if (isError) {
-    return null;
-  }
+export default function Navigation({ nav, page, menuToggle, setMenuToggle }) {
+  // const { nav, isLoading, isError } = useNav();
+  console.log('navigation component nav', nav);
 
   return (
     <NavigationOuterContainer>

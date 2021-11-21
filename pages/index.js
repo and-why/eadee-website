@@ -1,11 +1,13 @@
-import { getHomepage } from '@/lib/api';
+import { getHomepage, getSomething } from '@/lib/api';
 import Layout from '../components/Layout';
 import { componentSwitch } from '../components/switch';
 
-export default function Home({ data }) {
+export default function Home({ data, nav, footer }) {
   console.log('homepage body', data);
+  console.log('homepage nav', nav);
+  console.log('homepage footer', footer);
   return (
-    <Layout>
+    <Layout nav={nav} footer={footer}>
       {data.Header &&
         data.Header.map((block) => {
           return componentSwitch(block);
@@ -22,7 +24,8 @@ export default function Home({ data }) {
 
 export async function getStaticProps() {
   const data = await getHomepage();
-  console.log('homepage data', data);
+  const nav = await getSomething('top-nav-menu');
+  const footer = await getSomething('footer-nav');
   if (!data) {
     return {
       notFound: true,
@@ -31,6 +34,8 @@ export async function getStaticProps() {
   return {
     props: {
       data,
+      nav,
+      footer,
     },
     revalidate: 10,
   };

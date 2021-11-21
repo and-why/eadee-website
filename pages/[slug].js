@@ -1,10 +1,10 @@
 import Layout from '@/components/Layout';
 import { componentSwitch } from '@/components/switch';
-import { getAllPages, getPageById } from '@/lib/api';
+import { getAllPages, getPageById, getSomething } from '@/lib/api';
 
-export default function Page({ data }) {
+export default function Page({ data, nav, footer }) {
   return (
-    <Layout>
+    <Layout nav={nav} footer={footer}>
       {data.Header &&
         data.Header.map((block) => {
           return componentSwitch(block);
@@ -21,6 +21,8 @@ export default function Page({ data }) {
 
 export async function getStaticProps({ params }) {
   const allPages = await getAllPages();
+  const nav = await getSomething('top-nav-menu');
+  const footer = await getSomething('footer-nav');
 
   const [page] = allPages?.filter((page) => page.slug === params.slug);
 
@@ -33,6 +35,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data: page,
+      nav,
+      footer,
     },
     revalidate: 10,
   };
@@ -40,7 +44,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const allPages = await getAllPages();
-  console.log('allPages', allPages);
+
   const paths = allPages?.map((page) => {
     return {
       params: {

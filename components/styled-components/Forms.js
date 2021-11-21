@@ -55,7 +55,7 @@ export const Form = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--color-gray);
+    background: var(--color-gray_light);
     text-align: left;
     padding: 1em 2em;
     border-radius: 0 0 9px 9px;

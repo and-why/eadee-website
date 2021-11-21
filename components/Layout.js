@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Footer from './Footer';
 import Navigation from './Navigation';
 
-export default function Layout({ children, page, title, description }) {
+export default function Layout({ children, page, title, description, nav, footer }) {
   const fallbackTitle = 'Employee Directory Software - Making Connections Simpler';
   const fallbackDescription =
     'Eadee is a striaghtforward and simple employee directory system for helping your staff understand the company they are in and where they fit into it.';
@@ -16,9 +16,9 @@ export default function Layout({ children, page, title, description }) {
         <title>{title || fallbackTitle} | Eadee </title>
         <meta name='description' content={description || fallbackDescription}></meta>
       </Head>
-      <Navigation page={page} menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
+      <Navigation nav={nav} page={page} menuToggle={menuToggle} setMenuToggle={setMenuToggle} />
       {!menuToggle && <div>{children}</div>}
-      {!menuToggle && <Footer />}
+      {!menuToggle && <Footer footer={footer} />}
     </>
   );
 }

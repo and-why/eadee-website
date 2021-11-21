@@ -7,13 +7,10 @@ import Logo from './Logo';
 import { Container } from './styled-components/Container';
 import useFooter from './utils/useFooter';
 
-export default function Footer() {
-  const { footer, isLoading, isError } = useFooter();
+export default function Footer({ footer }) {
+  // const { footer, isLoading, isError } = useFooter();
 
   console.log('footer', footer);
-  if (isError) {
-    return null;
-  }
 
   if (footer) {
     return (
