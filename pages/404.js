@@ -17,7 +17,13 @@ export default function Custom404({ nav, footer }) {
               <p>This page doesn&apos;t exist. Try another</p>
             </div>
             <div>
-              <Image src='/images/06.png' height='400' width='400' objectFit='contain' />
+              <Image
+                alt='404 page image'
+                src='/images/06.png'
+                height='400'
+                width='400'
+                objectFit='contain'
+              />
               <p className='small'>
                 by <Link href='https://absurd.design/'>Absuddesigns</Link>
               </p>

@@ -24,7 +24,9 @@ export async function getStaticProps({ params }) {
   const nav = await getSomething('top-nav-menu');
   const footer = await getSomething('footer-nav');
 
-  const [page] = allPages?.filter((page) => page.slug === params.slug);
+  const [page] = allPages?.filter((page) => {
+    page.slug === params.slug;
+  });
 
   if (!page) {
     return {
@@ -46,13 +48,14 @@ export async function getStaticPaths() {
   const allPages = await getAllPages();
 
   const paths = allPages?.map((page) => {
-    return {
-      params: {
-        slug: page.slug,
-      },
-    };
+    if (page.slug !== 'contact') {
+      return {
+        params: {
+          slug: page.slug,
+        },
+      };
+    }
   });
-  console.log('paths', paths);
 
   return {
     paths,

@@ -11,7 +11,7 @@ export const CallToActionBlock = ({ content }) => {
           <h2>{content.heading}</h2>
           {content.button_text && content.button_url && (
             <ButtonContainer>
-              <Link href={content.button_url}>
+              <Link href={content.button_url} passHref>
                 <Button
                   buttonColor={content.button_colour}
                   buttonTextColour={content.button_text_colour}

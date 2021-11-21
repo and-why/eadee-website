@@ -66,7 +66,7 @@ export const MenuItems = ({ nav }) => {
                     {item.label}
                   </Link>
                 ) : (
-                  <Link key={item.id} href={item.page ? item.page.slug : item.url}>
+                  <Link key={item.id} href={item.page ? item.page.slug : item.url} passHref>
                     <Button buttonStyle={item.style}>{item.label}</Button>
                   </Link>
                 )}
