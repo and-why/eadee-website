@@ -1,10 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
-import { Button } from '../styled-components/Button';
-import ReactMarkdown from 'react-markdown';
 import { FeatureBlockImageText } from './FeatureBlockImageText';
 
 export const ColouredBlock = ({ content }) => {

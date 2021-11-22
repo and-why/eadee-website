@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
 
-export const LargeTextAndImageBlock = ({ content }) => {
+export default function LargeTextAndImageBlock({ content }) {
   return (
     <Section>
       <Container>
@@ -32,7 +32,7 @@ export const LargeTextAndImageBlock = ({ content }) => {
       </Container>
     </Section>
   );
-};
+}
 
 export const FullPageCenteredBlockContainer = styled.div`
   display: grid;

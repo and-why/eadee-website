@@ -21,7 +21,7 @@ export const FullPageCenteredBlock = ({ content }) => {
             {content.button_aside_text && <span>{content.button_aside_text}</span>}
           </div>
           {content.scroll_link && (
-            <a className='scroll' href='#main'>
+            <a className='scroll' href='#main' alt='click to scroll'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='39'

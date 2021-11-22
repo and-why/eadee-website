@@ -2,7 +2,7 @@ import { serverURL } from 'config';
 import { useState } from 'react';
 import ErrorMessage from '../ErrorMessage';
 import { Button } from '../styled-components/Button';
-import { Form, Input } from '../styled-components/Forms';
+import { Form } from '../styled-components/Forms';
 import useForm from '../useForm';
 import styled from 'styled-components';
 

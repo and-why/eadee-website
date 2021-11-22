@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout';
 import { componentSwitch } from '@/components/switch';
-import { getAllPages, getPageById, getSomething } from '@/lib/api';
+import { getAllPages, getSomething } from '@/lib/api';
 
 export default function Page({ data, nav, footer }) {
   return (

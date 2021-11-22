@@ -1,4 +1,3 @@
-import { server } from 'config';
 import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import { Container } from '../styled-components/Container';

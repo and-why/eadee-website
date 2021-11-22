@@ -1,11 +1,13 @@
+import dynamic from 'next/dynamic';
 import BannerImageText from './blocks/BannerImageText';
 import { ColouredBlock } from './blocks/ColouredBlock';
 import { FeatureBlockTitleAndText } from './blocks/FeatureBlockTitleAndText';
 import { FullPageCenteredBlock } from './blocks/FullPageCenteredBlock';
 import { FullWidthBlock } from './blocks/FullWidthBlock';
-import { LargeTextAndImageBlock } from './blocks/LargeTextAndImage';
 import { CallToActionBlock } from './blocks/CallToActionBlock';
 import FeatureBlockImageTextOnly from './FeatureBlockImageTextOnly';
+
+const DynamicLargeTextAndImageBlock = dynamic(() => import('./blocks/LargeTextAndImage'));
 
 export function componentSwitch(block) {
   console.log('block', block);
@@ -15,7 +17,7 @@ export function componentSwitch(block) {
     case 'blocks.banner-image-and-text':
       return <BannerImageText content={block} />;
     case 'blocks.large-text-and-image':
-      return <LargeTextAndImageBlock content={block} />;
+      return <DynamicLargeTextAndImageBlock content={block} />;
     case 'blocks.coloured-block':
       return <ColouredBlock content={block} />;
     case 'blocks.full-width':

@@ -11,24 +11,28 @@ html {
   src: url('/fonts/Inter-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter-Bold.ttf') format('truetype');
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/Inter-Black.ttf') format('truetype');
   font-style: normal;
   font-weight: 900;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Gloria Hallelujah';
   src: url('/fonts/GloriaHallelujah-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
 }
 :root {
   --color-gray_light: #f8f8f8;

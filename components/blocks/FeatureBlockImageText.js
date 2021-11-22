@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import { Container } from '../styled-components/Container';
-import { Section } from '../styled-components/Section';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { Button } from '../styled-components/Button';

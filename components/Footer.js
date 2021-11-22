@@ -1,12 +1,9 @@
-import { getFooter } from '@/lib/api';
 import { serverURL } from '../config';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Logo from './Logo';
 import { Container } from './styled-components/Container';
-import useFooter from './utils/useFooter';
-
 export default function Footer({ footer }) {
   if (footer) {
     return (

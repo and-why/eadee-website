@@ -1,7 +1,7 @@
 import ContactForm from '@/components/forms/contactForm';
 import Layout from '@/components/Layout';
 import { Container } from '@/components/styled-components/Container';
-import { getAllPages, getSomething } from '@/lib/api';
+import { getSomething } from '@/lib/api';
 
 export default function ContactPage({ data, nav, footer }) {
   return (

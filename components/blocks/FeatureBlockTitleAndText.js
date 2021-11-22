@@ -16,7 +16,7 @@
 //   ]
 // }
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';
 import ReactMarkdown from 'react-markdown';
