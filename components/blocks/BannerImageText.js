@@ -9,6 +9,7 @@ export default function BannerImageText({ content }) {
     <BannerImageTextOuterContainer
       textPosition={content.text_placement}
       bgColor={content.background_colour}
+      image={content.media}
     >
       {content.media && (
         <Image
@@ -89,7 +90,6 @@ const TextInnerContainer = styled.div`
   padding: var(--m);
   border-radius: var(--border-radius-large);
   background: var(--color-white);
-  box-shadow: var(--box-shadow);
   max-width: 600px;
   display: flex;
   flex-direction: column;
@@ -97,6 +97,11 @@ const TextInnerContainer = styled.div`
   p {
     margin-bottom: var(--l);
   }
+  ${(props) =>
+    props.image &&
+    css`
+      box-shadow: var(--box-shadow);
+    `}
   ${(props) =>
     props.justifyContent === 'start' &&
     css`
