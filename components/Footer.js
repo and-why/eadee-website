@@ -8,10 +8,6 @@ import { Container } from './styled-components/Container';
 import useFooter from './utils/useFooter';
 
 export default function Footer({ footer }) {
-  // const { footer, isLoading, isError } = useFooter();
-
-  console.log('footer', footer);
-
   if (footer) {
     return (
       <FooterOuterContainer>
