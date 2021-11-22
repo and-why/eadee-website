@@ -24,9 +24,7 @@ export async function getStaticProps({ params }) {
   const nav = await getSomething('top-nav-menu');
   const footer = await getSomething('footer-nav');
 
-  const [page] = allPages?.filter((page) => {
-    page.slug === params.slug;
-  });
+  const [page] = allPages?.filter((page) => page.slug === params.slug);
 
   if (!page) {
     return {

@@ -118,6 +118,9 @@ p {
   padding: 0;
   line-height: 1.35;
 }
+.markdown p {
+  margin-bottom: var(--n);
+}
 
 h1,
 h2,
@@ -129,6 +132,16 @@ h6 {
   margin: 0 0 var(--m);
   padding: 0;
 }
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin: var(--l) 0 var(--m);
+}
+
 h1 {
   font-size: var(--xl);
   font-weight: 900;
@@ -159,4 +172,8 @@ h6 {
 ::selection {
   background: var(--color-primary);
   color: #fff;
+}
+
+.markdown li {
+  margin-bottom: var(--s);
 }

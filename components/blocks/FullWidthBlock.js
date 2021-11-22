@@ -20,7 +20,7 @@ export const FullWidthBlock = ({ content }) => {
         <FullWidthBlockContainer>
           <TextBlock>
             <h2>{content.title}</h2>
-            <ReactMarkdown>{content.content}</ReactMarkdown>
+            <ReactMarkdown className='markdown'>{content.content}</ReactMarkdown>
           </TextBlock>
         </FullWidthBlockContainer>
       </Container>
