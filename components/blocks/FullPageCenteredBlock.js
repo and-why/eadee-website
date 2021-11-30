@@ -66,7 +66,7 @@ const FullPageCenteredContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: calc(100vh - 83px);
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -125,9 +125,9 @@ const FullPageCenteredContainer = styled.div`
   a.scroll {
     font-size: var(--s);
     color: var(--color-gray_medium);
-    margin-top: var(--s-vmin);
+    margin-top: var(--m-vmin);
     border-bottom: none;
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
     &:hover {
       border-bottom: none;
