@@ -8,7 +8,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 export default function PricingPage({ data, nav, footer }) {
-  const [monthly, setMonthly] = useState(true);
+  const [monthly, setMonthly] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
   return (
