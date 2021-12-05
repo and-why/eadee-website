@@ -23,7 +23,7 @@ export default function PricingPage({ data, nav, footer }) {
               Switch{' '}
               {monthly
                 ? 'to annual pricing for 2 months free'
-                : 'back to monthly pricing to pay monthly'}
+                : 'to monthly pricing to pay monthly'}
             </Button>
 
             {data.plan.map((plan, index) => {
