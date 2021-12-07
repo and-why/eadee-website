@@ -103,7 +103,7 @@ const TextBlock = styled.div`
   /* align-self: center; */
   @media (min-width: 850px) {
     padding: var(--l) var(--n);
-    width: 90%;
+    width: 100%;
     ${(props) =>
       props.layout === 'columns' &&
       css`
