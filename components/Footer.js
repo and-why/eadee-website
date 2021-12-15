@@ -6,18 +6,18 @@ import Logo from './Logo';
 import { Container } from './styled-components/Container';
 import { useEffect } from 'react';
 export default function Footer({ footer }) {
+  useEffect(() => {
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = '919aea81-92d9-4484-81fc-de13f796d7f7';
+    (() => {
+      const d = document;
+      const s = d.createElement('script');
+      s.src = 'https://client.crisp.chat/l.js';
+      s.async = 1;
+      d.getElementsByTagName('body')[0].appendChild(s);
+    })();
+  });
   if (footer) {
-    useEffect(() => {
-      window.$crisp = [];
-      window.CRISP_WEBSITE_ID = '919aea81-92d9-4484-81fc-de13f796d7f7';
-      (() => {
-        const d = document;
-        const s = d.createElement('script');
-        s.src = 'https://client.crisp.chat/l.js';
-        s.async = 1;
-        d.getElementsByTagName('body')[0].appendChild(s);
-      })();
-    });
     return (
       <FooterOuterContainer>
         <Container>
