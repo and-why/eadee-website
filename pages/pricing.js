@@ -63,7 +63,7 @@ const UpgradeForm = ({ plan, monthly }) => {
         <PricingButton>
           <PricingFormInner>
             <h3>
-              ${monthly ? plan.monthly_price : plan.monthly_price * 10}/{monthly ? 'm' : 'y'}
+              ${monthly ? plan.monthly_price : plan.monthly_price * 10}/{monthly ? 'month' : 'year'}
             </h3>
             <p>Up to {plan.number_of_employees} employees</p>
             <Button dark>Get started for free</Button>

@@ -3,9 +3,6 @@ import Layout from '../components/Layout';
 import { componentSwitch } from '../components/switch';
 
 export default function Home({ data, nav, footer }) {
-  console.log('homepage body', data);
-  console.log('homepage nav', nav);
-  console.log('homepage footer', footer);
   return (
     <Layout nav={nav} footer={footer}>
       {data.Header &&
