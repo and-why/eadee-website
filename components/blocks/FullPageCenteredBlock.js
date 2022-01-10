@@ -75,9 +75,9 @@ const FullPageCenteredContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 350px;
-    /* max-width: 450px;
-    min-width: 350px; */
+    width: 100%;
+    max-width: 350px;
+    min-width: 250px;
     text-align: center;
     p {
       position: relative;
@@ -107,7 +107,10 @@ const FullPageCenteredContainer = styled.div`
   .button_footer {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-top: var(--xl);
+    flex-wrap: wrap;
+    gap: 4px;
     span {
       font-weight: 300;
       font-size: var(--s);

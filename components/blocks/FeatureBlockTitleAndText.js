@@ -1,21 +1,3 @@
-// {
-//   "__component": "blocks.feature-block-title-and-text",
-//   "id": 1,
-//   "background_colour": "color-gray-light",
-//   "feature_block_title_text": [
-//       {
-//           "id": 1,
-//           "title": "Learn more about your colleagues",
-//           "content": "Detailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust. Detailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust.\n\n### Learn something else\n\nDetailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust."
-//       },
-//       {
-//           "id": 2,
-//           "title": "Learn a bit more about your colleagues",
-//           "content": "Detailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust. Detailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust.\n\n### Learn something else\n\nDetailed Employee Profiles give your staff the ability to share information with each other for greater transparency and therefore trust."
-//       }
-//   ]
-// }
-
 import styled from 'styled-components';
 import { Container } from '../styled-components/Container';
 import { Section } from '../styled-components/Section';

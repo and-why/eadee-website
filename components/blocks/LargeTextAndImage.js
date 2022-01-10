@@ -40,22 +40,29 @@ export const FullPageCenteredBlockContainer = styled.div`
   align-items: center;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-gap: var(--l);
-  padding: var(--xs-vmin) 0;
+  grid-gap: var(--n);
   padding-top: 83px;
   .video {
     /* width: 100%; */
     border-radius: var(--m);
   }
+  @media (min-width: 500px) {
+    padding: var(--xs-vmin) 0;
+  }
 `;
 
 export const LargeTextBlock = styled.div`
+  width: 100%;
   p {
     font-weight: 900;
     line-height: 1.2;
     /* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
     font-size: calc(32px + (48 - 24) * ((100vw - 200px) / (1440 - 200)));
+    @media (min-width: 1350px) {
+      font-size: 55px;
+    }
   }
+
   ${(props) =>
     props.textPosition === 'right' &&
     css`

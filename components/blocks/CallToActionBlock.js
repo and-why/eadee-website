@@ -51,6 +51,8 @@ const CallToActionInnerContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   p {
     margin: 0;
     margin-left: var(--s);
