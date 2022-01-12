@@ -1,8 +1,8 @@
 import ImageBoxShadow from '@/components/ImageBoxShadow';
 import React from 'react';
-import { render } from '../utils/test-utils';
+import { render } from '../../utils/test-utils';
 
-describe('ShadowImage', () => {
+describe('ImageBoxShadow', () => {
   let expectedProps;
   beforeEach(() => {
     expectedProps = {
@@ -27,7 +27,7 @@ describe('ShadowImage', () => {
     expect(imageAlt).toBeVisible();
   });
 
-  it('matches snapshot', () => {
+  it('image with box shadow matches snapshot', () => {
     const { asFragment } = render(<ImageBoxShadow {...expectedProps} />);
 
     expect(asFragment()).toMatchSnapshot();
