@@ -3,7 +3,7 @@ import { render } from '../../utils/test-utils';
 import Navigation from '@/components/Navigation';
 
 describe('Navigation', () => {
-  test('should render navigation', () => {
+  it('should render navigation', () => {
     let expectedProps = {
       id: 1,
       published_at: '2021-11-10T04:40:05.156Z',

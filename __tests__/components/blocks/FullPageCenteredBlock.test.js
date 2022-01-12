@@ -3,7 +3,7 @@ import { render } from '../../../utils/test-utils';
 import { FullPageCenteredBlock } from '@/components/blocks/FullPageCenteredBlock';
 
 describe('FullPageCenteredBlock', () => {
-  test('should render full page centered block', () => {
+  it('should render full page centered block', () => {
     let expectedProps = {
       content: {
         __component: 'blocks.full-page-block',
