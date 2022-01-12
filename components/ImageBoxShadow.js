@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 export default function ImageBoxShadow({ image }) {
+  console.log('image', image);
   return (
     <ImageContainer>
       <Image
@@ -11,6 +12,8 @@ export default function ImageBoxShadow({ image }) {
         width={image.width}
         objectFit='cover'
         objectPosition='center'
+        placeholder='blur'
+        blurDataURL={image.formats.thumbnail.url}
         quality={100}
       />
     </ImageContainer>

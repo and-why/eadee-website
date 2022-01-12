@@ -26,6 +26,8 @@ export default function LargeTextAndImageBlock({ content }) {
                 width={content.image.width}
                 objectFit='contain'
                 quality={100}
+                placeholder='blur'
+                blurDataURL={content.image.formats.thumbnail.url}
               />
             ))}
         </FullPageCenteredBlockContainer>

@@ -22,6 +22,8 @@ export const FullWidthBlock = ({ content }) => {
             alt={content.image.alternativeText}
             width='1290px'
             height='800px'
+            placeholder='blur'
+            blurDataURL={content.image.formats.thumbnail.url}
             objectFit='contain'
             quality={100}
           />

@@ -20,6 +20,8 @@ export default function Navigation({ nav, page, menuToggle, setMenuToggle }) {
                   width='51px'
                   objectFit='contain'
                   objectPosition='left'
+                  placeholder='blur'
+                  blurDataURL={nav.logo.formats.thumbnail.url}
                   quality={100}
                 />
               ) : (

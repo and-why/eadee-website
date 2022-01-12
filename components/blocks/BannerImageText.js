@@ -16,6 +16,8 @@ export default function BannerImageText({ content }) {
           src={content.media.url}
           alt={content.media.alternativeText}
           layout='fill'
+          placeholder='blur'
+          blurDataURL={content.media.formats.thumbnail.url}
           objectFit='cover'
         />
       )}

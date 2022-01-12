@@ -31,6 +31,8 @@ export default function Footer({ footer }) {
                   width='51px'
                   objectFit='contain'
                   objectPosition='center'
+                  placeholder='blur'
+                  blurDataURL={footer.logo.formats.thumbnail.url}
                   quality={100}
                 />
               ) : (
