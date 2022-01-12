@@ -10,7 +10,6 @@ import FeatureBlockImageTextOnly from './FeatureBlockImageTextOnly';
 const DynamicLargeTextAndImageBlock = dynamic(() => import('./blocks/LargeTextAndImage'));
 
 export function componentSwitch(block) {
-  console.log('block', block);
   switch (block.__component) {
     case 'blocks.full-page-block':
       return <FullPageCenteredBlock content={block} />;

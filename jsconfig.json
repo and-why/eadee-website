@@ -6,7 +6,8 @@
       "@/styled-components/*": ["components/styled-components/*"],
       "@/lib/*": ["lib/*"],
       "@/utils/*": ["utils/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/pages/*": ["pages/*"]
     }
   }
 }

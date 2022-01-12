@@ -26,15 +26,12 @@ export default function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-      console.log(res);
       if (res.status === 200) {
         const json = await res.json();
-        console.log(json);
         setLoading(false);
         setSuccess(true);
       }
     } catch (error) {
-      console.log('contact form error', error);
       setLoading(false);
       setError(error);
     }

@@ -5,7 +5,6 @@ import { Section } from '../styled-components/Section';
 import Image from 'next/image';
 
 export const FullWidthBlock = ({ content }) => {
-  console.log('full', content);
   return (
     <Section>
       <Container>

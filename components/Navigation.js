@@ -6,9 +6,6 @@ import Logo from './Logo';
 import { Button } from './styled-components/Button';
 
 export default function Navigation({ nav, page, menuToggle, setMenuToggle }) {
-  // const { nav, isLoading, isError } = useNav();
-  console.log('navigation component nav', nav);
-
   return (
     <NavigationOuterContainer>
       <Container>
@@ -42,7 +39,7 @@ export default function Navigation({ nav, page, menuToggle, setMenuToggle }) {
                 </Button>
 
                 <MobileMenuContainer menuToggle={menuToggle}>
-                  <MenuItems nav={nav} />
+                  <MenuItems nav={nav} mobile='mobile' />
                 </MobileMenuContainer>
               </MobileMenu>
             </>
@@ -53,7 +50,7 @@ export default function Navigation({ nav, page, menuToggle, setMenuToggle }) {
   );
 }
 
-export const MenuItems = ({ nav }) => {
+export const MenuItems = ({ nav, mobile }) => {
   return (
     <>
       {nav &&
@@ -67,7 +64,9 @@ export const MenuItems = ({ nav }) => {
                   </Link>
                 ) : (
                   <Link key={item.id} href={item.page ? item.page.slug : item.url} passHref>
-                    <Button buttonStyle={item.style}>{item.label}</Button>
+                    <Button buttonStyle={item.style}>
+                      {mobile ? item.label.slice(0, 12) : item.label}
+                    </Button>
                   </Link>
                 )}
               </>
