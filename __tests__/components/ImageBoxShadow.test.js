@@ -12,6 +12,11 @@ describe('ImageBoxShadow', () => {
         width: 600,
         height: 400,
         url: 'https://eadee-strapi-images.s3.ap-southeast-2.amazonaws.com/search_2_ae42031c8a.png',
+        formats: {
+          thumbnail: {
+            url: 'https://eadee-strapi-images.s3.ap-southeast-2.amazonaws.com/org_chart_2_585e637658.png',
+          },
+        },
       },
     };
   });

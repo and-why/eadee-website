@@ -6,7 +6,7 @@ export default function useForm(initial = {}) {
 
   useEffect(() => {
     setInputs(initial);
-  }, [initialValues, initial]);
+  }, [initialValues]);
 
   function handleChange(e) {
     let { value, name, type } = e.target;
@@ -14,9 +14,7 @@ export default function useForm(initial = {}) {
     if (type === 'number') {
       value = parseInt(value);
     }
-    // if (type === 'tel') {
-    //   value = parseInt(value);
-    // }
+
     if (type === 'file') {
       [value] = e.target.files;
     }

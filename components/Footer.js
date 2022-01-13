@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 export default function Footer({ footer }) {
   useEffect(() => {
     window.$crisp = [];
+    $crisp.push(['safe', true]);
     window.CRISP_WEBSITE_ID = '919aea81-92d9-4484-81fc-de13f796d7f7';
     (() => {
       const d = document;
@@ -16,7 +17,8 @@ export default function Footer({ footer }) {
       s.async = 1;
       d.getElementsByTagName('body')[0].appendChild(s);
     })();
-  });
+  }, []);
+
   if (footer) {
     return (
       <FooterOuterContainer>

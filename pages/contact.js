@@ -3,7 +3,7 @@ import Layout from '@/components/Layout';
 import { Container } from '@/components/styled-components/Container';
 import { getSomething } from '@/lib/api';
 
-export default function ContactPage({ data, nav, footer }) {
+export default function ContactPage({ nav, footer }) {
   return (
     <Layout nav={nav} footer={footer}>
       <Container>
@@ -22,6 +22,5 @@ export async function getStaticProps() {
       nav,
       footer,
     },
-    revalidate: 10,
   };
 }

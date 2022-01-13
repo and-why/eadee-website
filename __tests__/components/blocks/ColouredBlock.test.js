@@ -32,6 +32,11 @@ describe('ColouredBlock', () => {
               url: 'https://eadee-strapi-images.s3.ap-southeast-2.amazonaws.com/org_chart_2_585e637658.png',
               height: 200,
               width: 200,
+              formats: {
+                thumbnail: {
+                  url: 'https://eadee-strapi-images.s3.ap-southeast-2.amazonaws.com/org_chart_2_585e637658.png',
+                },
+              },
             },
           },
         ],
