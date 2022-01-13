@@ -17,7 +17,7 @@ export default function PricingPage({ data, nav, footer }) {
         <PricePageTitle>
           <h2>{data.title}</h2>
         </PricePageTitle>
-        <PricingPageStyles w='100%' maxW='800px' direction='row'>
+        <PricingPageStyles>
           <PricingOptionsContainer>
             <Button dark={monthly} onClick={() => setMonthly(!monthly)}>
               Switch{' '}
@@ -35,6 +35,7 @@ export default function PricingPage({ data, nav, footer }) {
             <h4>All plans include</h4>
             <BenefitsList>
               {data.benefits.map((benefit, index) => {
+                console.log('benefit', benefit);
                 return (
                   <BenefitRow key={index}>
                     <BenefitIcon>
@@ -66,7 +67,7 @@ const UpgradeForm = ({ plan, monthly }) => {
               ${monthly ? plan.monthly_price : plan.monthly_price * 10}/{monthly ? 'month' : 'year'}
             </h3>
             <p>Up to {plan.number_of_employees} employees</p>
-            <Button dark>Get started for free</Button>
+            <FakeButton dark>Get started for free</FakeButton>
           </PricingFormInner>
         </PricingButton>
       </Link>
@@ -130,6 +131,31 @@ const PricingButton = styled.button`
   cursor: pointer;
   &:hover {
     background: var(--color-gray);
+  }
+`;
+const FakeButton = styled.div`
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-width: 70px;
+  transition: var(--transition);
+  background-color: var(--color-dark);
+  border: 1px solid var(--color-dark);
+  color: var(--color-white);
+  &:hover,
+  &:active,
+  &:focus {
+    transition: var(--transition);
+    background-color: var(--color-black);
+    border: 1px solid var(--color-black);
   }
 `;
 const PricingForm = styled.div`

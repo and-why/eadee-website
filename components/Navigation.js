@@ -59,19 +59,17 @@ export const MenuItems = ({ nav, mobile }) => {
         nav.body.map((item) => {
           if (item.url || item.page) {
             return (
-              <>
+              <div key={item.id}>
                 {item.style == 'none' ? (
-                  <Link key={item.id} href={item.page ? item.page.slug : item.url}>
-                    {item.label}
-                  </Link>
+                  <Link href={item.page ? item.page.slug : item.url}>{item.label}</Link>
                 ) : (
-                  <Link key={item.id} href={item.page ? item.page.slug : item.url} passHref>
+                  <Link href={item.page ? item.page.slug : item.url} passHref>
                     <Button buttonStyle={item.style}>
                       {mobile ? item.label.slice(0, 12) : item.label}
                     </Button>
                   </Link>
                 )}
-              </>
+              </div>
             );
           }
         })}
