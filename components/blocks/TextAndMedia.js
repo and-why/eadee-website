@@ -10,8 +10,8 @@ export default function TextAndMedia({ content }) {
   return (
     <Section>
       <Container>
-        <TextAndMediaContainer>
-          <TextDiv textDirection={content.text_direction}>
+        <TextAndMediaContainer textDirection={content.text_direction}>
+          <TextDiv>
             <h2>{content.heading}</h2>
             <LeadingContent>{content.content}</LeadingContent>
             {content.button_text && (
@@ -31,27 +31,33 @@ export default function TextAndMedia({ content }) {
 
 const TextAndMediaContainer = styled.div`
   margin: 64px 0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 32px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   align-items: center;
   justify-content: center;
-  grid-auto-flow: dense;
+  @media (min-width: 700px) {
+    flex-direction: row;
+    ${(props) =>
+      props.textDirection === 'right' &&
+      css`
+        flex-direction: row-reverse;
+      `};
+  }
 `;
 
 const TextDiv = styled.div`
-  grid-column: 1;
+  width: 100%;
   margin: 32px;
-  ${(props) =>
-    props.textDirection === 'right' &&
-    css`
-      grid-column: 3;
-    `};
 `;
 const ImageDiv = styled.div`
-  grid-column: 2;
+  width: 100%;
+  img {
+    width: 100%;
+  }
 `;
-const LeadingContent = styled.div`
+const LeadingContent = styled.p`
   font-size: 22px;
   margin-bottom: 32px;
+  line-height: 1.3;
 `;

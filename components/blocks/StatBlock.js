@@ -28,7 +28,7 @@ export default function StatBlock({ content }) {
 const StatsBlockContainer = styled.div`
   display: flex;
   gap: 32px;
-  margin: 64px 0;
+  margin: 96px 0;
   width: 100%;
   align-items: flex-start;
   text-align: center;
