@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 export default function ImageBoxShadow({ image }) {
-  console.log('image', image);
   return (
     <ImageContainer>
       <Image

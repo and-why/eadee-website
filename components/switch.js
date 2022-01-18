@@ -6,9 +6,10 @@ import { FullPageCenteredBlock } from './blocks/FullPageCenteredBlock';
 import { FullWidthBlock } from './blocks/FullWidthBlock';
 import { CallToActionBlock } from './blocks/CallToActionBlock';
 import FeatureBlockImageTextOnly from './FeatureBlockImageTextOnly';
+import TextAndMedia from './blocks/TextAndMedia';
+import StatBlock from './blocks/StatBlock';
 
 const DynamicLargeTextAndImageBlock = dynamic(() => import('./blocks/LargeTextAndImage'));
-
 export function componentSwitch(block) {
   switch (block.__component) {
     case 'blocks.full-page-block':
@@ -27,7 +28,11 @@ export function componentSwitch(block) {
       return <FeatureBlockTitleAndText content={block} />;
     case 'blocks.feature-block-image-text':
       return <FeatureBlockImageTextOnly content={block} />;
+    case 'blocks.stats-block':
+      return <StatBlock content={block} />;
+    case 'blocks.text-and-media':
+      return <TextAndMedia content={block} />;
     default:
-      return <p>No block Found</p>;
+      return <p>This block cannot be added</p>;
   }
 }
