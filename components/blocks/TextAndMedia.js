@@ -12,7 +12,7 @@ export default function TextAndMedia({ content }) {
       <Container>
         <TextAndMediaContainer textDirection={content.text_direction}>
           <TextDiv>
-            <h2>{content.heading}</h2>
+            {content.heading && <h2>{content.heading}</h2>}
             <LeadingContent>{content.content}</LeadingContent>
             {content.button_text && (
               <Link href={content.button_url} passHref>
@@ -20,9 +20,11 @@ export default function TextAndMedia({ content }) {
               </Link>
             )}
           </TextDiv>
-          <ImageDiv>
-            <ImageBoxShadow image={content.media}></ImageBoxShadow>
-          </ImageDiv>
+          {content.media && (
+            <ImageDiv>
+              <ImageBoxShadow image={content.media}></ImageBoxShadow>
+            </ImageDiv>
+          )}
         </TextAndMediaContainer>
       </Container>
     </Section>
