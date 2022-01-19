@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 import styled, { css } from 'styled-components';
 import ImageBoxShadow from '../ImageBoxShadow';
 import { Button } from '../styled-components/Button';
@@ -13,7 +14,9 @@ export default function TextAndMedia({ content }) {
         <TextAndMediaContainer textDirection={content.text_direction}>
           <TextDiv>
             {content.heading && <h2>{content.heading}</h2>}
-            <LeadingContent>{content.content}</LeadingContent>
+            <LeadingContent>
+              <ReactMarkdown>{content.content}</ReactMarkdown>
+            </LeadingContent>
             {content.button_text && (
               <Link href={content.button_url} passHref>
                 <Button primary>{content.button_text}</Button>
@@ -58,7 +61,7 @@ const ImageDiv = styled.div`
     width: 100%;
   }
 `;
-const LeadingContent = styled.p`
+const LeadingContent = styled.div`
   font-size: 22px;
   margin-bottom: 32px;
   line-height: 1.3;
